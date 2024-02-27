@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef, Suspense } from "react";
+import React, { useRef } from "react";
 import Image from "next/image";
 import { useSearchParams, useRouter } from "next/navigation"; // Corrected import path
 
