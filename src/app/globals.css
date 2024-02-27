@@ -1,0 +1,156 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* styles.css */
+body {
+  font-family: "Roboto", sans-serif;
+}
+
+/* Header Styles */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(3, 21, 27, 0.8);
+  padding: 1rem;
+  z-index: 1000;
+}
+
+.video-containers {
+  width: calc(
+    50% - 20px
+  ); /* Adjust width to fit three images per line with margins */
+  margin-right: 20px; /* Add right margin to create space between images */
+  margin-bottom: 20px; /* Add bottom margin to create space between lines */
+  float: left; /* Allow images to float next to each other */
+  box-sizing: border-box; /* Include padding and border in element's total width and height */
+}
+
+.description-color {
+  font-family: "actor", sans-serif; /* Change "actor" to the actual font name */
+  color: #d1d5db;
+}
+
+.image-container {
+  margin-bottom: 10px; /* Adjust margin as needed */
+}
+
+.video-time-container {
+  font-size: small;
+}
+
+.relatedlink-text-container {
+  font-size: large;
+}
+
+.content-group-div {
+  background-color: #121e22;
+}
+
+.content-div {
+  background-color: #20292d;
+}
+
+.content-group-left {
+}
+
+.content-group-left1 {
+  max-height: 330px; /* Set maximum height for the container */
+  overflow-y: auto; /* Enable vertical scrolling if content exceeds max height */
+}
+
+.content-group-right1-video {
+  height: 190px;
+  width: 100px;
+}
+
+/* relevant-links */
+
+.relevant-links {
+  padding: 10px; /* Add padding to the links container */
+}
+
+.links-container {
+  padding: 10px; /* Add padding to the links container */
+}
+
+.links-container a {
+  display: block; /* Display links as blocks */
+  margin-bottom: 5px; /* Add some spacing between links */
+  color: #333; /* Set link color */
+  text-decoration: none; /* Remove default underline */
+}
+
+.links-container a:hover {
+  text-decoration: underline; /* Add underline on hover */
+}
+
+/* Update styles.css */
+
+.video-container {
+  width: calc(
+    33.33% - 20px
+  ); /* Adjust width to fit three images per line with margins */
+  margin-right: 20px; /* Add right margin to create space between images */
+  margin-bottom: 20px; /* Add bottom margin to create space between lines */
+  float: left; /* Allow images to float next to each other */
+  box-sizing: border-box; /* Include padding and border in element's total width and height */
+}
+
+.video-image {
+  width: 100%; /* Ensure images take up the full width of their container */
+  height: auto; /* Maintain aspect ratio */
+  display: block; /* Make sure images are displayed as blocks */
+}
+
+@media (max-width: 768px) {
+  .video-container {
+    width: calc(
+      50% - 20px
+    ); /* Adjust width for smaller screens to fit two images per line */
+  }
+}
+
+@media (max-width: 480px) {
+  .video-container {
+    width: 100%; /* Adjust width for even smaller screens to fit one image per line */
+  }
+}
+
+.text-truncate {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
