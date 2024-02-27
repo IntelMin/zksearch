@@ -38,7 +38,6 @@ const SearchBox: React.FC<SearchComponentProps> = ({ className }) => {
     >
       <div
         className={`flex border border-gray-700 hover:shadow-lg focus-within:shadow-lg px-5 py-2.5 rounded-lg items-center shadow bg-opacity-5 ${className}`}
-        style={{ width: "544px" }}
       >
         <Image
           width={20}
@@ -51,7 +50,7 @@ const SearchBox: React.FC<SearchComponentProps> = ({ className }) => {
           type="text"
           ref={searchInputRef}
           defaultValue={query} // Use the state instead of directly accessing router.query.query
-          className="flex-grow focus:outline-none bg-transparent text-white"
+          className="flex-grow focus:outline-none bg-transparent text-white 2xl:w-[550px] xl:w-[450px] md:w-[350px] sm:w-[250px]"
           placeholder="What are you looking for?"
         />
       </div>

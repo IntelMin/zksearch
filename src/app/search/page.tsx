@@ -78,6 +78,7 @@ export default function Page() {
   }
 
   useEffect(() => {
+    setLoading(true);
     fetchDuckData();
     fetchCorcelText();
     setLoading(false);
@@ -91,9 +92,9 @@ export default function Page() {
   return (
     <>
       <div className="flex flex-col items-center">
-        <div className="bottom-0 left-0 w-full flex justify-center mt-28 flex-col xl:flex-row">
+        <div className="bottom-0 w-full flex justify-center mt-28 flex-col xl:flex-row">
           <div className="flex-auto w-full xl:w-3/5" style={{ marginBottom: "100px" }}>
-            <div className="content-group-div ml-10 mr-4 rounded-2xl p-4 content-group-left overflow-hidden">
+            <div className="content-group-div mx-12 rounded-2xl p-4 content-group-left overflow-hidden xl:ml-12 xl:mr-4">
               {summary ? summary.length > 0 && (
                 <Summary description={summary[0].choices[0].delta.content} />
               ) : <div className="text-white text-2xl text-center">loading...</div>}
@@ -103,7 +104,7 @@ export default function Page() {
 
           <div className="flex-auto w-full xl:w-2/5">
             {result && result.inline_images && (
-              <div className="content-group-div ml-4 mb-4 mr-10 rounded-2xl p-4 content-group-right-first content-group-right1 overflow-hidden ">
+              <div className="content-group-div mx-12 xl:ml-4 xl:mr-12 mb-4 rounded-2xl p-4 content-group-right-first content-group-right1 overflow-hidden ">
                 <p className="text-white text-lg mb-3">Image</p>
                 <div className="content-group-video">
                   <div className="mb-3 ">
@@ -120,7 +121,7 @@ export default function Page() {
               </div>
             )}
             {result && result.inline_videos && (
-              <div className="content-group-div ml-4 mb-4 mr-10 rounded-2xl p-4 content-group-right-first content-group-right1 overflow-hidden ">
+              <div className="content-group-div mx-12 xl:ml-4 xl:mr-12 mb-4 rounded-2xl p-4 content-group-right-first content-group-right1 overflow-hidden ">
                 <p className="text-white text-lg mb-3">Video</p>
                 <div className="content-group-video">
                   <div className="mb-3 ">
@@ -140,7 +141,7 @@ export default function Page() {
               </div>
             )}
 
-            <div className="content-group-div ml-4 mr-10 rounded-2xl p-4 content-group-right-first content-group-right2 overflow-hidden">
+            <div className="content-group-div mx-12 xl:ml-4 xl:mr-12 rounded-2xl p-4 content-group-right-first content-group-right2 overflow-hidden">
               {result ?
                 result.related_searches &&
                 result.related_searches.map((related, index) => (
