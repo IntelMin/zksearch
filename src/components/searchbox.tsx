@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef, Suspense } from "react";
+import React, { useRef } from "react";
 import Image from "next/image";
 import { useSearchParams, useRouter } from "next/navigation"; // Corrected import path
 
@@ -25,7 +25,7 @@ const SearchBox: React.FC<SearchComponentProps> = ({ className }) => {
 
   return (
     <form
-      className={`flex space-x-4 items-center ${className}`}
+      className={`flex space-x-4 items-center ${className} rounded-3xl`}
       onSubmit={search}
     >
       <div

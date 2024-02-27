@@ -1,8 +1,7 @@
 'use client'
 
-import React, { useEffect, useState, Suspense } from "react";
+import React, { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
-import { fetchCorcelImage, fetchCorcelText, fetchDuckData } from "./action";
 import { Result } from "../../data/ducktypes";
 import Summary from "@/components/summary";
 import RelevantLinks from "@/components/relevantlinks";
@@ -13,61 +12,78 @@ import { AxonDataEntry, DataEntry } from "@/data/corceltypes";
 
 const Page: React.FC = () => {
   const searchParams = useSearchParams();
-  const q = searchParams.get("q") || "";
-
-  const [result, setResult] = useState<Result | null>(null);
-  const [summary, setSummary] = useState<DataEntry[] | null>(null);
-  const [images, setImages] = useState<AxonDataEntry[] | null>(null);
+  const q = searchParams.get("q");
+  const [result, setResult] = useState<Result>();
+  const [summary, setSummary] = useState<DataEntry[]>();
   const [loading, setLoading] = useState<boolean>(true);
 
-  useEffect(() => {
-    if (!q) return; // Don't run the effect if q is not available
-
-    setLoading(true);
-
-    fetchDuckData(q)
-      .then((data: Result) => {
-        setResult(data);
-        setLoading(false);
-      })
-      .catch((error) => {
-        console.error("There was a problem fetching the data:", error);
-        setLoading(false);
+  async function fetchCorcelText() {
+    try {
+      const response = await fetch("/api/corcel", {
+        method: 'POST',
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ query: q }),
       });
 
-    fetchCorcelText(q)
-      .then((data: DataEntry[]) => {
-        setSummary(data);
-        setLoading(false);
-      })
-      .catch((error) => {
-        console.error("There was a problem fetching the data:", error);
-        setLoading(false);
-      });
+      if (!response.ok) {
+        throw new Error('Failed to fetch data from server');
+      }
 
-    // Uncomment and use fetchCorcelImage if needed
-    // fetchCorcelImage(q)
-    //   .then((data: AxonDataEntry[]) => {
-    //     setImages(data);
-    //     setLoading(false);
-    //   })
-    //   .catch((error) => {
-    //     console.error('There was a problem fetching the data:', error);
-    //     setLoading(false);
-    //   });
-  }, [q]);
+      const responseData = await response.json();
 
-  if (loading) {
-    return <div>Loading ...</div>;
+      const { data } = responseData;
+      setSummary(data)
+      if (!data || !Array.isArray(data)) {
+        throw new Error('Invalid data format received from server');
+      }
+
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
   }
 
+  async function fetchDuckData() {
+    try {
+      const response = await fetch("/api/duck", {
+        method: 'POST',
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ query: q }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to fetch data from server');
+      }
+
+      const responseData = await response.json();
+
+      const { data } = responseData;
+
+      setResult(data)
+      if (!data || !Array.isArray(data)) {
+        throw new Error('Invalid data format received from server');
+      }
+
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
+  }
+
+  useEffect(() => {
+    fetchDuckData();
+    fetchCorcelText();
+    setLoading(false);
+  }, [q])
+
+
   return (
-    <Suspense fallback={<div>Loading...</div>}>
-      {/* Body */}
+    <>
       <div className="flex flex-col items-center">
-        <div className=" bottom-0 left-0 w-full flex justify-center mt-22">
-          {/* Left Group */}
-          <div className="flex-auto w-3/5 " style={{ marginBottom: "100px" }}>
+        <div className="bottom-0 left-0 w-full flex justify-center mt-28 flex-col xl:flex-row">
+          <div className="flex-auto w-full xl:w-3/5" style={{ marginBottom: "100px" }}>
             <div className="content-group-div ml-10 mr-4 rounded-2xl p-4 content-group-left overflow-hidden">
               {summary && summary.length > 0 && (
                 <Summary description={summary[0].choices[0].delta.content} />
@@ -76,7 +92,7 @@ const Page: React.FC = () => {
             </div>
           </div>
 
-          <div className="flex-auto w-2/5">
+          <div className="flex-auto w-full xl:w-2/5">
             {result && result.inline_images && (
               <div className="content-group-div ml-4 mb-4 mr-10 rounded-2xl p-4 content-group-right-first content-group-right1 overflow-hidden ">
                 <p className="text-white text-lg mb-3">Image</p>
@@ -130,7 +146,7 @@ const Page: React.FC = () => {
           </div>
         </div>
       </div>
-    </Suspense>
+    </>
   );
 };
 

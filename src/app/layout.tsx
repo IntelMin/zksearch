@@ -27,9 +27,11 @@ export default function RootLayout({
             minHeight: "100vh",
           }}
         >
-          <Header />
-          {children}
-          {/* <Footer /> */}
+          <Suspense>
+            <Header />
+            {children}
+            <Footer />
+          </Suspense>
         </div>
       </body>
     </html>
