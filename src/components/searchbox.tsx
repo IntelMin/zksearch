@@ -3,6 +3,8 @@
 import React, { useRef } from "react";
 import Image from "next/image";
 import { useSearchParams, useRouter } from "next/navigation"; // Corrected import path
+import { useAccount } from "wagmi";
+import { toast } from 'react-hot-toast';  
 
 interface SearchComponentProps {
   className?: string;
@@ -12,6 +14,7 @@ const SearchBox: React.FC<SearchComponentProps> = ({ className }) => {
   const router = useRouter();
   const searchParams = useSearchParams();
   const searchInputRef = useRef<HTMLInputElement>(null);
+  const { isConnected } = useAccount();
 
   const query = searchParams.get("q") || "";
 
@@ -19,8 +22,13 @@ const SearchBox: React.FC<SearchComponentProps> = ({ className }) => {
     e.preventDefault();
     const term = searchInputRef.current?.value || "";
     if (!term.trim()) return;
-
-    router.push(`/search?q=${encodeURIComponent(term.trim())}`);
+    if (isConnected){
+      router.push(`/search?q=${encodeURIComponent(term.trim())}`);
+    }
+    else {
+      toast.error("Please sign in to your wallet");
+    }
+    
   };
 
   return (

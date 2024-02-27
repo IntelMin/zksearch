@@ -9,8 +9,13 @@ import RelatedLink from "@/components/relatedlink";
 import ImageCard from "@/components/image";
 import VideoCard from "@/components/video";
 import { AxonDataEntry, DataEntry } from "@/data/corceltypes";
+import { useAccount } from "wagmi";
+import { useRouter } from "next/navigation";
 
 export default function Page() {
+  const { address, isConnected } = useAccount();
+
+  const router = useRouter();
   const searchParams = useSearchParams();
   const q = searchParams.get("q");
   const [result, setResult] = useState<Result>();
@@ -78,16 +83,20 @@ export default function Page() {
     setLoading(false);
   }, [q])
 
-
+  useEffect(() => {
+    if (!address) {
+      router.push("/");
+    }
+  }, [])
   return (
     <>
       <div className="flex flex-col items-center">
         <div className="bottom-0 left-0 w-full flex justify-center mt-28 flex-col xl:flex-row">
           <div className="flex-auto w-full xl:w-3/5" style={{ marginBottom: "100px" }}>
             <div className="content-group-div ml-10 mr-4 rounded-2xl p-4 content-group-left overflow-hidden">
-              {summary && summary.length > 0 && (
+              {summary ? summary.length > 0 && (
                 <Summary description={summary[0].choices[0].delta.content} />
-              )}
+              ) : <div className="text-white text-2xl text-center">loading...</div>}
               {result && <RelevantLinks links={result.organic_results} />}
             </div>
           </div>
@@ -131,9 +140,8 @@ export default function Page() {
               </div>
             )}
 
-            <div className="content-group-div ml-4 mt-4 mr-10 rounded-2xl p-4 content-group-right-first content-group-right2 overflow-hidden">
-              <p className="text-white text-lg mb-3">Related Links</p>
-              {result &&
+            <div className="content-group-div ml-4 mr-10 rounded-2xl p-4 content-group-right-first content-group-right2 overflow-hidden">
+              {result ?
                 result.related_searches &&
                 result.related_searches.map((related, index) => (
                   <RelatedLink
@@ -141,7 +149,7 @@ export default function Page() {
                     link={related.link}
                     query={related.query}
                   />
-                ))}
+                )): <div className="text-white text-2xl text-center">loading...</div>}
             </div>
           </div>
         </div>

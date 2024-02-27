@@ -5,6 +5,9 @@ import Image from "next/image";
 import SearchBox from "./searchbox";
 import { usePathname } from "next/navigation";
 import { motion } from "framer-motion"
+import { Connect } from "./connect";
+import { useAccount } from "wagmi";
+import { useRouter } from "next/navigation";
 
 import logoImg from "../../public/logo.svg";
 import userImg from "../../public/user.svg";
@@ -17,7 +20,10 @@ const variants = {
 
 const Header = () => {
   const pathname = usePathname();
+  const router = useRouter();
   const [viewsign, setViewsign] = useState(false);
+  const { address, isConnected } = useAccount();
+
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -33,6 +39,12 @@ const Header = () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
+
+  useEffect(() => {
+    if(!address){
+      router.push("/");
+    }
+  }, [])
 
   return (
     <div className={`px-10 fixed w-full bg-opacity-70 ${pathname === "/search" && 'bg-black'}`}>
@@ -56,15 +68,22 @@ const Header = () => {
               <div className="w-1/4 flex border-r border-stone-500">
                 <Image width={48} height={48} src={logoImg} alt="LOGO" className="mx-auto" />
               </div>
-              <div className="w-5/8 p-4">
-                  <p className="text-white text-sm">Sign In With Wallet</p>
-                  <p className="text-white text-sm">To ZKML AI Search</p>
-                  <p className="text-stone-500 text-sm my-3">You can see better result by sign in</p>
-                  <button className="px-2 py-1 rounded-2xl text-white text-sm" style={{backgroundColor : "#05B7D1"}}>Connect Wallet</button>
+              <div className="w-full flex flex-col">
+                <div className="w-full flex flex-row">
+                  <div className="w-5/8 px-4 pt-2">
+                    <p className="text-white text-sm">Sign In With Wallet</p>
+                    <p className="text-white text-sm">To ZKML AI Search</p>
+                    <p className="text-stone-500 text-sm my-3">You can see better result by sign in</p>
+                  </div>
+                  <div className="w-1/8 p-2">
+                    <Image width={36} height={36} src={closeImg} alt="close" className="ml-auto cursor-pointer rounded-full" onClick={() => setViewsign(false)} />
+                  </div>
+                </div>
+                <div className="w-full ml-2">
+                  <Connect />
+                </div>
               </div>
-              <div className="w-1/8 p-2">
-                <Image width={36} height={36} src={closeImg} alt="close" className="ml-auto cursor-pointer rounded-full" onClick={() => setViewsign(false)}/>
-              </div>
+
             </div>
           </motion.main>
         }

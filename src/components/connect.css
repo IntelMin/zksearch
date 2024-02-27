@@ -1,0 +1,47 @@
+.connect-button-group {
+    display: flex;
+    gap: 8;
+}
+
+.wallet_button {
+    border-radius: 20px;
+    border: 1px solid rgb(147, 145, 145);
+    padding: 0.5em 1em;
+    background-color: #191b27;
+    color: white;
+    margin-right: 0.4rem;
+    font-size: 10px;
+}
+.unconnect {
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+.wallet_button:hover {
+    border-color: #38E5FF;
+    color: #38E5FF;
+}
+.wallet_button:focus,
+.wallet_button:focus-visible {
+    outline: 4px auto -webkit-focus-ring-color;
+}
+.chain-icon {
+    margin-right: 0.5rem;
+}
+
+.wallet_button:hover {
+    .chain-icon {
+        opacity: 0.5;
+    }
+}
+
+
+@media only screen and (max-width: 424px) {
+    .wallet_button {
+        padding: 0.5rem 0.4rem;
+        margin-right: 0.3rem;
+    }
+    .chain-icon {
+        margin-right: 0.4rem;
+    }
+}
+
