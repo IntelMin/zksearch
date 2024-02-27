@@ -25,7 +25,7 @@ const SearchBox: React.FC<SearchComponentProps> = ({ className }) => {
 
   return (
     <form
-      className={`flex space-x-4 items-center ${className}`}
+      className={`flex space-x-4 items-center ${className} rounded-3xl`}
       onSubmit={search}
     >
       <div
