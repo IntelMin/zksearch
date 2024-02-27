@@ -27,9 +27,7 @@ export default function RootLayout({
             minHeight: "100vh",
           }}
         >
-          <Suspense fallback={<div>Loading...</div>}>
-            <Header />
-          </Suspense>
+          <Header />
           {children}
           {/* <Footer /> */}
         </div>
