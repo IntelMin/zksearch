@@ -1,1 +1,1 @@
-# zkml-zksearch
+# zkml-zksearch-dapp
