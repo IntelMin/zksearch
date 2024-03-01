@@ -24,7 +24,7 @@ const VideoCard: React.FC<VideoCardProps> = ({
               className="inline-block mr-2 rounded-lg"
               src={imageUrl}
               alt={title}
-              style={{ width: "160px", height: "100px", marginLeft: "4px" }}
+              style={{ width: "100%", height: "100px", marginLeft: "4px" }}
             />
           </a>
         </div>
