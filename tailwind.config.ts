@@ -16,6 +16,9 @@ const config: Config = {
       spacing: {
         "22": "88px", // Add a custom spacing value
       },
+      backgroundColor: {
+        muted: "#6e7681"
+      }
     },
   },
   plugins: [],
