@@ -1,10 +1,10 @@
 "use client";
 
-import React, { useRef, useState } from "react";
+import React, { useRef } from "react";
 import Image from "next/image";
 import { useSearchParams, useRouter } from "next/navigation"; // Corrected import path
 import { useAccount } from "wagmi";
-import { toast } from "react-hot-toast";
+import { toast } from 'react-hot-toast';  
 
 interface SearchComponentProps {
   className?: string;
@@ -13,71 +13,47 @@ interface SearchComponentProps {
 const SearchBox: React.FC<SearchComponentProps> = ({ className }) => {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const [searchInput, setSearchInput] = useState<string>("");
+  const searchInputRef = useRef<HTMLInputElement>(null);
   const { isConnected } = useAccount();
-  const [suggestion, setSuggestion] = useState([]);
 
   const query = searchParams.get("q") || "";
 
   const search = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (searchInput.length < 1) return;
-    if (!searchInput.trim()) return;
-    router.push(`/search?q=${encodeURIComponent(searchInput.trim())}`);
+    const term = searchInputRef.current?.value || "";
+    if (!term.trim()) return;
+    if (isConnected){
+      router.push(`/search?q=${encodeURIComponent(term.trim())}`);
+    }
+    else {
+      toast.error("Please sign in to your wallet");
+    }
+    
   };
 
   return (
     <form
-      className={`flex flex-col space-x-4 items-center ${className} rounded-3xl`}
+      className={`flex space-x-4 items-center ${className} rounded-3xl`}
       onSubmit={search}
     >
       <div
-        className={`flex hover:shadow-lg focus-within:shadow-lg px-5 py-2.5 ${
-          searchInput?.length > 0 ? "rounded-t-lg" : "rounded-lg"
-        } items-center shadow bg-[#18181B66] bg-opacity-5 ${className}`}
+        className={`flex border border-gray-700 hover:shadow-lg focus-within:shadow-lg px-5 py-2.5 rounded-lg items-center shadow bg-opacity-5 ${className}`}
       >
         <Image
           width={20}
           height={20}
           src="/search-normal.svg"
           alt="Search Icon"
-          className="mr-3 h-5 w-5 text-gray-500"
+          className="h-5 w-5 text-gray-500 mr-3"
         />
         <input
           type="text"
-          autoFocus
-          onChange={(e) => setSearchInput(e.target.value)}
+          ref={searchInputRef}
           defaultValue={query} // Use the state instead of directly accessing router.query.query
-          className={`flex-grow bg-transparent text-white focus:outline-none sm:w-[250px] md:w-[350px] xl:w-[450px] 2xl:w-[550px] ${
-            searchInput?.length > 0 ? "border-b border-[#27272A] pb-2" : ""
-          }`}
+          className="flex-grow focus:outline-none bg-transparent text-white 2xl:w-[550px] xl:w-[450px] md:w-[350px] sm:w-[250px]"
           placeholder="What are you looking for?"
         />
       </div>
-      {searchInput?.length > 0 &&
-        (Array.isArray(suggestion) && suggestion?.length > 0 ? (
-          suggestion?.map((item, i) => {
-            return (
-              <div
-                key={i}
-                className="translate-x-[-8px] bg-[#18181B66] px-5 py-2.5"
-              >
-                <div className="flex gap-3">
-                  <Image
-                    width={20}
-                    height={20}
-                    src="/search-normal.svg"
-                    alt="Search Icon"
-                    className="mr-3 h-5 w-5 text-gray-500"
-                  />
-                  <h1 className="w-[538px] -translate-y-1">{item}</h1>
-                </div>
-              </div>
-            );
-          })
-        ) : (
-          <div>Nothing found</div>
-        ))}
     </form>
   );
 };
