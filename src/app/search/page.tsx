@@ -108,7 +108,7 @@ export default function Page() {
           >
             <div className="content-group-div mx-12 rounded-2xl p-4 content-group-left xl:ml-12 xl:mr-4">
               {loading ? (
-                <div className="content-div rounded-2xl mb-4 p-4 h-[32vh] flex flex-col gap-4">
+                <div className="content-div rounded-2xl mb-4 p-4 flex flex-col gap-4">
                   <Skeleton className="w-32 h-7 rounded-full" />
                   <Skeleton className="w-[40vw] h-5 rounded-full" />
                   <Skeleton className="w-[42vw] h-5 rounded-full" />
