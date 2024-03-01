@@ -18,7 +18,7 @@ const ImageCard: React.FC<ImageCardProps> = ({ imageUrl, title, url }) => {
               className="inline-block mr-2 rounded-lg"
               src={imageUrl}
               alt={title}
-              style={{ width: "160px", height: "100px", marginLeft: "4px" }}
+              style={{ width: "100%", height: "130px", marginLeft: "4px" }}
             />
           </a>
         </div>

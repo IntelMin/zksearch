@@ -123,8 +123,7 @@ header {
   width: calc(
     33.33% - 20px
   ); /* Adjust width to fit three images per line with margins */
-  margin-right: 20px; /* Add right margin to create space between images */
-  margin-bottom: 20px; /* Add bottom margin to create space between lines */
+  margin: 10px; /* Add right margin to create space between images */
   float: left; /* Allow images to float next to each other */
   box-sizing: border-box; /* Include padding and border in element's total width and height */
 }

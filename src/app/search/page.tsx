@@ -92,22 +92,16 @@ export default function Page() {
     fetchData();
   }, [q]);
 
-  useEffect(() => {
-    if (!address) {
-      router.push("/");
-    }
-  }, []);
-
   return (
     <>
       <div className="flex flex-col items-center">
-        <div className="bottom-0 w-full flex justify-center mt-28 flex-col xl:flex-row">
+        <div className="bottom-0 w-full flex justify-center mt-[8rem] flex-col xl:flex-row">
           <div
             className="flex-auto w-full xl:w-3/5"
           >
             <div className="content-group-div mx-12 rounded-2xl p-4 content-group-left xl:ml-12 xl:mr-4">
               {loading ? (
-                <div className="content-div rounded-2xl mb-4 p-4 h-[32vh] flex flex-col gap-4">
+                <div className="content-div rounded-2xl mb-4 p-4 flex flex-col gap-4">
                   <Skeleton className="w-32 h-7 rounded-full" />
                   <Skeleton className="w-[40vw] h-5 rounded-full" />
                   <Skeleton className="w-[42vw] h-5 rounded-full" />
@@ -204,7 +198,7 @@ export default function Page() {
               </div>
             )}
 
-            <ScrollArea className="content-group-div mx-12 xl:ml-4 xl:mr-12 rounded-2xl p-4 content-group-right-first content-group-right2 overflow-hidden h-[19vh]">
+            <ScrollArea className="content-group-div mx-12 xl:ml-4 xl:mr-12 rounded-2xl p-4 content-group-right-first content-group-right2 overflow-hidden">
               {loading ? (
                 <div className="flex flex-row justify-around">
                   <Skeleton className="w-[10vw] h-[5vh]" />
