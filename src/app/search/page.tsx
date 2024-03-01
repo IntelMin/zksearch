@@ -11,6 +11,7 @@ import VideoCard from "@/components/video";
 import { AxonDataEntry, DataEntry } from "@/data/corceltypes";
 import { useAccount } from "wagmi";
 import { useRouter } from "next/navigation";
+import { ScrollArea } from "@/components/ui/scroll-area";
 
 export default function Page() {
   const { address, isConnected } = useAccount();
@@ -94,7 +95,7 @@ export default function Page() {
       <div className="flex flex-col items-center">
         <div className="bottom-0 w-full flex justify-center mt-28 flex-col xl:flex-row">
           <div className="flex-auto w-full xl:w-3/5" style={{ marginBottom: "100px" }}>
-            <div className="content-group-div mx-12 rounded-2xl p-4 content-group-left overflow-hidden xl:ml-12 xl:mr-4">
+            <div className="content-group-div mx-12 rounded-2xl p-4 content-group-left xl:ml-12 xl:mr-4">
               {summary ? summary.length > 0 && (
                 <Summary description={summary[0].choices[0].delta.content} />
               ) : <div className="text-white text-2xl text-center">loading...</div>}
@@ -107,7 +108,7 @@ export default function Page() {
               <div className="content-group-div mx-12 xl:ml-4 xl:mr-12 mb-4 rounded-2xl p-4 content-group-right-first content-group-right1 overflow-hidden ">
                 <p className="text-white text-lg mb-3">Image</p>
                 <div className="content-group-video">
-                  <div className="mb-3 ">
+                  <ScrollArea className="mb-3 h-[24vh]">
                     {result.inline_images.map((image, index) => (
                       <ImageCard
                         key={index}
@@ -116,7 +117,7 @@ export default function Page() {
                         url={image.link}
                       />
                     ))}
-                  </div>
+                  </ScrollArea>
                 </div>
               </div>
             )}
@@ -124,7 +125,7 @@ export default function Page() {
               <div className="content-group-div mx-12 xl:ml-4 xl:mr-12 mb-4 rounded-2xl p-4 content-group-right-first content-group-right1 overflow-hidden ">
                 <p className="text-white text-lg mb-3">Video</p>
                 <div className="content-group-video">
-                  <div className="mb-3 ">
+                  <ScrollArea className="mb-3 h-[24vh]">
                     {result &&
                       result.inline_videos &&
                       result.inline_videos.map((video, index) => (
@@ -136,12 +137,12 @@ export default function Page() {
                           duration={video.duration}
                         />
                       ))}
-                  </div>
+                  </ScrollArea>
                 </div>
               </div>
             )}
 
-            <div className="content-group-div mx-12 xl:ml-4 xl:mr-12 rounded-2xl p-4 content-group-right-first content-group-right2 overflow-hidden">
+            <ScrollArea className="content-group-div mx-12 xl:ml-4 xl:mr-12 rounded-2xl p-4 content-group-right-first content-group-right2 overflow-hidden h-[19vh]">
               {result ?
                 result.related_searches &&
                 result.related_searches.map((related, index) => (
@@ -151,7 +152,7 @@ export default function Page() {
                     query={related.query}
                   />
                 )): <div className="text-white text-2xl text-center">loading...</div>}
-            </div>
+            </ScrollArea>
           </div>
         </div>
       </div>

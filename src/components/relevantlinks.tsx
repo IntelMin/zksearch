@@ -1,11 +1,12 @@
 // components/RelevantLinks.js
+import { ScrollArea } from "@/components/ui/scroll-area";
 
 import { OrganicResult } from "@/data/ducktypes";
 import React from "react";
 
 const RelevantLinks: React.FC<{ links: OrganicResult[] }> = ({ links }) => {
   return (
-    <div className="content-div rounded-2xl mb-4 p-4">
+    <ScrollArea className="content-div rounded-2xl mb-4 p-4 h-[37vh]">
       <p className="text-white text-lg mb-3">Relevant Links:</p>
 
       <div className="relevant-links">
@@ -26,7 +27,7 @@ const RelevantLinks: React.FC<{ links: OrganicResult[] }> = ({ links }) => {
           </div>
         ))}
       </div>
-    </div>
+    </ScrollArea>
   );
 };
 
