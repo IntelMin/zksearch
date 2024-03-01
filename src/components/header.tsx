@@ -1,10 +1,10 @@
-'use client';
+"use client";
 
 import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import SearchBox from "./searchbox";
 import { usePathname } from "next/navigation";
-import { motion } from "framer-motion"
+import { motion } from "framer-motion";
 import { Connect } from "./connect";
 import { useAccount } from "wagmi";
 import { useRouter } from "next/navigation";
@@ -16,7 +16,7 @@ import closeImg from "../../public/close.svg";
 const variants = {
   hidden: { opacity: 0, x: 200, y: -20 },
   enter: { opacity: 1, x: 50, y: -20 },
-}
+};
 
 const Header = () => {
   const pathname = usePathname();
@@ -41,53 +41,87 @@ const Header = () => {
   }, []);
 
   useEffect(() => {
-    if(!address){
+    if (!address) {
       router.push("/");
     }
-  }, [])
+  }, []);
 
   return (
-    <div className={`px-10 fixed w-full bg-opacity-70 ${pathname === "/search" && 'bg-black'}`}>
-      <div className="w-full flex px-4 py-6">
+    <div
+      className={`px-10 fixed w-full bg-opacity-70 z-10 ${
+        pathname === "/search" && "backdrop-blur"
+      }`}
+    >
+      <div className="flex w-full px-4 py-6">
         {pathname === "/search" && (
           <div className="flex">
-            <Image width={48} height={48} src={logoImg} alt="LOGO" className="mr-8" />
+            <Image
+              width={48}
+              height={48}
+              src={logoImg}
+              alt="LOGO"
+              className="mr-8"
+            />
             <SearchBox />
           </div>
         )}
-        <div className="flex cursor-pointer rounded-full bg-stone-900 border bg-opacity-70 p-4 w-12 h-12 hover:bg-stone-500 hover:text-stone-700 ml-auto" onClick={() => setViewsign(!viewsign)}>
+        <div
+          className="ml-auto flex h-12 w-12 cursor-pointer rounded-full border bg-stone-900 bg-opacity-70 p-4 hover:bg-stone-500 hover:text-stone-700"
+          onClick={() => setViewsign(!viewsign)}
+        >
           <Image src={userImg} alt={userImg}></Image>
         </div>
-        {viewsign &&
+        {viewsign && (
           <motion.main
             variants={variants}
             initial="hidden"
             animate="enter"
             transition={{ type: "linear" }}
-          ><div ref={ref} className="flex fade fixed ml-auto w-[300px] bg-opacity-30 rounded-2xl border border-stone-500 right-20 top-20 h-[160px] bg-stone-900">
-              <div className="w-1/4 flex border-r border-stone-500">
-                <Image width={48} height={48} src={logoImg} alt="LOGO" className="mx-auto" />
+          >
+            <div
+              ref={ref}
+              className="fade fixed right-20 top-20 ml-auto flex h-[160px] w-[300px] rounded-2xl border border-stone-500 bg-stone-900 bg-opacity-30"
+            >
+              <div className="flex w-1/4 border-r border-stone-500">
+                <Image
+                  width={48}
+                  height={48}
+                  src={logoImg}
+                  alt="LOGO"
+                  className="mx-auto"
+                />
               </div>
-              <div className="w-full flex flex-col">
-                <div className="w-full flex flex-row">
+              <div className="flex w-full flex-col">
+                <div className="flex w-full flex-row">
                   <div className="w-5/8 px-4 pt-2">
-                    <p className="text-white text-sm">Sign In With Wallet</p>
-                    <p className="text-white text-sm">To ZKML AI Search</p>
-                    <p className="text-stone-500 text-sm my-3">You can see better result by sign in</p>
+                    <p className="text-sm text-white">Sign In With Wallet</p>
+                    <p className="text-sm text-white">To ZKML AI Search</p>
+                    <p className="my-3 text-sm text-stone-500">
+                      You can see better result by sign in
+                    </p>
                   </div>
                   <div className="w-1/8 p-2">
-                    <Image width={36} height={36} src={closeImg} alt="close" className="ml-auto cursor-pointer rounded-full" onClick={() => setViewsign(false)} />
+                    <Image
+                      width={36}
+                      height={36}
+                      src={closeImg}
+                      alt="close"
+                      className="ml-auto cursor-pointer rounded-full"
+                      onClick={() => setViewsign(false)}
+                    />
                   </div>
                 </div>
-                <div className="w-full ml-2">
+                <div className="ml-2 w-full">
                   <Connect />
                 </div>
               </div>
-
             </div>
           </motion.main>
-        }
+        )}
       </div>
+      <div
+        className={`${pathname === "/search" && "border-b border-[#3F3F46]"}`}
+      ></div>
     </div>
   );
 };

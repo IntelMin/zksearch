@@ -119,8 +119,7 @@ export default function Page() {
                   <Summary description={summary[0].choices[0].delta.content} />
                 )}</>
               )}
-              {/* {result && <RelevantLinks links={result.organic_results} />} */}
-              {loading ? (<div className="content-div rounded-2xl mb-4 p-4 h-[37vh] flex flex-col gap-8">
+              {loading ? (<div className="content-div rounded-2xl mb-4 p-4 flex flex-col gap-8">
                 <Skeleton className="w-32 h-7 rounded-full" />
                 <div className="flex flex-col gap-6">
                   <Skeleton className="w-[38vw] h-5 rounded-full" />
@@ -147,7 +146,7 @@ export default function Page() {
               <div className="content-group-div mx-12 xl:ml-4 xl:mr-12 mb-4 rounded-2xl p-4 content-group-right-first content-group-right1 overflow-hidden ">
                 <p className="text-white text-lg mb-3">Image</p>
                 <div className="content-group-video">
-                  <ScrollArea className="mb-3 h-[24vh]">
+                  <ScrollArea className="mb-3">
                     {loading ? (<div className="flex flex-row justify-around">
                       <Skeleton className="w-[10vw] h-[15vh]" />
                       <Skeleton className="w-[10vw] h-[15vh]" />
@@ -170,7 +169,7 @@ export default function Page() {
               <div className="content-group-div mx-12 xl:ml-4 xl:mr-12 mb-4 rounded-2xl p-4 content-group-right-first content-group-right1 overflow-hidden ">
                 <p className="text-white text-lg mb-3">Video</p>
                 <div className="content-group-video">
-                  <ScrollArea className="mb-3 h-[24vh]">
+                  <ScrollArea className="mb-3">
                     {loading ? (<div className="flex flex-row justify-around">
                       <Skeleton className="w-[10vw] h-[15vh]" />
                       <Skeleton className="w-[10vw] h-[15vh]" />
