@@ -13,7 +13,7 @@ const Footer = () => {
         pathname === "/search" && "backdrop-blur"
       }`}
     >
-      <div className="mx-auto flex w-full items-center py-8">
+      <div className="mx-auto flex w-full items-center border-t border-[#3F3F46] py-8">
         <Image
           width={36}
           height={36}

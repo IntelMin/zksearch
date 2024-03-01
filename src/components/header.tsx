@@ -119,6 +119,9 @@ const Header = () => {
           </motion.main>
         )}
       </div>
+      <div
+        className={`${pathname === "/search" && "border-b border-[#3F3F46]"}`}
+      ></div>
     </div>
   );
 };
