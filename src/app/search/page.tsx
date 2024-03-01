@@ -92,12 +92,6 @@ export default function Page() {
     fetchData();
   }, [q]);
 
-  useEffect(() => {
-    if (!address) {
-      router.push("/");
-    }
-  }, []);
-
   return (
     <>
       <div className="flex flex-col items-center">
