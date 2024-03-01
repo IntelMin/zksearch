@@ -9,13 +9,13 @@ import RelatedLink from "@/components/relatedlink";
 import ImageCard from "@/components/image";
 import VideoCard from "@/components/video";
 import { AxonDataEntry, DataEntry } from "@/data/corceltypes";
-import { useAccount } from "wagmi";
+// import { useAccount } from "wagmi";
 import { useRouter } from "next/navigation";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Skeleton } from "@/components/ui/skeleton";
 
 export default function Page() {
-  const { address, isConnected } = useAccount();
+  // const { address, isConnected } = useAccount();
 
   const router = useRouter();
   const searchParams = useSearchParams();
