@@ -163,7 +163,7 @@ export default function Page() {
               <div className="content-group-div mx-12 xl:ml-4 xl:mr-12 mb-4 rounded-2xl p-4 content-group-right-first content-group-right1 overflow-hidden ">
                 <p className="text-white text-lg mb-3">Image</p>
                 <div className="content-group-video">
-                  <ScrollArea className="mb-3 h-[24vh]">
+                  <ScrollArea className="mb-3">
                     {loading ? (
                       <div className="flex flex-row justify-around">
                         <Skeleton className="w-[10vw] h-[15vh]" />
@@ -190,7 +190,7 @@ export default function Page() {
               <div className="content-group-div mx-12 xl:ml-4 xl:mr-12 mb-4 rounded-2xl p-4 content-group-right-first content-group-right1 overflow-hidden ">
                 <p className="text-white text-lg mb-3">Video</p>
                 <div className="content-group-video">
-                  <ScrollArea className="mb-3 h-[24vh]">
+                  <ScrollArea className="mb-3">
                     {loading ? (
                       <div className="flex flex-row justify-around">
                         <Skeleton className="w-[10vw] h-[15vh]" />
