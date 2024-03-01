@@ -48,7 +48,7 @@ const Header = () => {
 
   return (
     <div
-      className={`px-10 fixed w-full bg-opacity-70 ${
+      className={`px-10 fixed w-full bg-opacity-70 z-10 ${
         pathname === "/search" && "backdrop-blur"
       }`}
     >
