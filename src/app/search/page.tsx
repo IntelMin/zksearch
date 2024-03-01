@@ -205,7 +205,7 @@ export default function Page() {
               </div>
             )}
 
-            <ScrollArea className="content-group-div mx-12 xl:ml-4 xl:mr-12 rounded-2xl p-4 content-group-right-first content-group-right2 overflow-hidden h-[19vh]">
+            <ScrollArea className="content-group-div mx-12 xl:ml-4 xl:mr-12 rounded-2xl p-4 content-group-right-first content-group-right2 overflow-hidden">
               {loading ? (
                 <div className="flex flex-row justify-around">
                   <Skeleton className="w-[10vw] h-[5vh]" />
