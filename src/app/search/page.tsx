@@ -98,7 +98,6 @@ export default function Page() {
         <div className="bottom-0 w-full flex justify-center mt-[8rem] flex-col xl:flex-row">
           <div
             className="flex-auto w-full xl:w-3/5"
-            style={{ marginBottom: "130px" }}
           >
             <div className="content-group-div mx-12 rounded-2xl p-4 content-group-left xl:ml-12 xl:mr-4">
               {loading ? (
@@ -144,7 +143,7 @@ export default function Page() {
             </div>
           </div>
 
-          <div className="flex-auto w-full xl:w-2/5">
+          <div className="flex-auto w-full mb-32 xl:w-2/5">
             {result && result.inline_images && (
               <div className="content-group-div mx-12 xl:ml-4 xl:mr-12 mb-4 rounded-2xl p-4 content-group-right-first content-group-right1 overflow-hidden ">
                 <p className="text-white text-lg mb-3">Image</p>
