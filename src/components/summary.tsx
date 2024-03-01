@@ -13,8 +13,9 @@ interface SummaryProps {
 const Summary: React.FC<SummaryProps> = ({ description }) => {
   return (
     <ScrollArea className="content-div rounded-2xl mb-4 p-4 h-[32vh]">
-        <p className="text-white text-lg mb-3">Summary</p>
-        <p className="text-base description-color">{description}</p>
+      <p className="text-white text-lg mb-3">Summary</p>
+      {description?.split(". ").map((des: string)=>
+        <p className="text-base description-color">{des+"."}</p>)}
     </ScrollArea>
   );
 };
