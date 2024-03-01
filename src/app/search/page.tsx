@@ -101,10 +101,10 @@ export default function Page() {
   return (
     <>
       <div className="flex flex-col items-center">
-        <div className="bottom-0 w-full flex justify-center mt-28 flex-col xl:flex-row">
+        <div className="bottom-0 w-full flex justify-center mt-[8rem] flex-col xl:flex-row">
           <div
             className="flex-auto w-full xl:w-3/5"
-            style={{ marginBottom: "100px" }}
+            style={{ marginBottom: "130px" }}
           >
             <div className="content-group-div mx-12 rounded-2xl p-4 content-group-left xl:ml-12 xl:mr-4">
               {loading ? (
