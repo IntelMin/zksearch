@@ -15,12 +15,7 @@ const SearchBox: React.FC<SearchComponentProps> = ({ className }) => {
   const searchParams = useSearchParams();
   const [searchInput, setSearchInput] = useState<string>("");
   const { isConnected } = useAccount();
-  const [suggestion, setSuggestion] = useState([
-    "First Suggestion",
-    "Second Suggestion",
-    "Third Suggestion",
-    "Fourth Suggestion",
-  ]);
+  const [suggestion, setSuggestion] = useState([]);
 
   const query = searchParams.get("q") || "";
 
