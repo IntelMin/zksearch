@@ -66,10 +66,10 @@ const Header = () => {
           </div>
         )}
         <div
-          className="ml-auto flex h-12 w-12 cursor-pointer rounded-full border bg-stone-900 bg-opacity-70 p-4 hover:bg-stone-500 hover:text-stone-700"
+          className="ml-auto flex h-12 w-12 cursor-pointer rounded-full border border-custom-gray bg-stone-900 bg-opacity-70 p-4 hover:bg-stone-500 hover:text-stone-700"
           onClick={() => setViewsign(!viewsign)}
         >
-          <Image src={userImg} alt={userImg}></Image>
+          <Image src={userImg} alt={`avatar`}></Image>
         </div>
         {viewsign && (
           <motion.main
