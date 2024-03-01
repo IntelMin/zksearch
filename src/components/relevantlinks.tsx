@@ -1,4 +1,5 @@
 // components/RelevantLinks.js
+import { ScrollArea } from "@/components/ui/scroll-area";
 
 import { OrganicResult } from "@/data/ducktypes";
 import React from "react";

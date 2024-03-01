@@ -11,6 +11,8 @@ import VideoCard from "@/components/video";
 import { AxonDataEntry, DataEntry } from "@/data/corceltypes";
 // import { useAccount } from "wagmi";
 import { useRouter } from "next/navigation";
+import { ScrollArea } from "@/components/ui/scroll-area";
+import { Skeleton } from "@/components/ui/skeleton";
 
 export default function Page() {
   // const { address, isConnected } = useAccount();
@@ -74,6 +76,17 @@ export default function Page() {
       console.error("Error fetching data:", error);
     }
   }
+
+  const fetchData = async () => {
+    try {
+      setLoading(true);
+      await fetchDuckData();
+      await fetchCorcelText();
+      setLoading(false);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
 
   useEffect(() => {
     setLoading(true);
