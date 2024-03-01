@@ -9,11 +9,11 @@ import RelatedLink from "@/components/relatedlink";
 import ImageCard from "@/components/image";
 import VideoCard from "@/components/video";
 import { AxonDataEntry, DataEntry } from "@/data/corceltypes";
-import { useAccount } from "wagmi";
+// import { useAccount } from "wagmi";
 import { useRouter } from "next/navigation";
 
 export default function Page() {
-  const { address, isConnected } = useAccount();
+  // const { address, isConnected } = useAccount();
 
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -25,7 +25,7 @@ export default function Page() {
   async function fetchCorcelText() {
     try {
       const response = await fetch("/api/corcel", {
-        method: 'POST',
+        method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
@@ -33,26 +33,25 @@ export default function Page() {
       });
 
       if (!response.ok) {
-        throw new Error('Failed to fetch data from server');
+        throw new Error("Failed to fetch data from server");
       }
 
       const responseData = await response.json();
 
       const { data } = responseData;
-      setSummary(data)
+      setSummary(data);
       if (!data || !Array.isArray(data)) {
-        throw new Error('Invalid data format received from server');
+        throw new Error("Invalid data format received from server");
       }
-
     } catch (error) {
-      console.error('Error fetching data:', error);
+      console.error("Error fetching data:", error);
     }
   }
 
   async function fetchDuckData() {
     try {
       const response = await fetch("/api/duck", {
-        method: 'POST',
+        method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
@@ -60,20 +59,19 @@ export default function Page() {
       });
 
       if (!response.ok) {
-        throw new Error('Failed to fetch data from server');
+        throw new Error("Failed to fetch data from server");
       }
 
       const responseData = await response.json();
 
       const { data } = responseData;
 
-      setResult(data)
+      setResult(data);
       if (!data || !Array.isArray(data)) {
-        throw new Error('Invalid data format received from server');
+        throw new Error("Invalid data format received from server");
       }
-
     } catch (error) {
-      console.error('Error fetching data:', error);
+      console.error("Error fetching data:", error);
     }
   }
 
@@ -82,32 +80,41 @@ export default function Page() {
     fetchDuckData();
     fetchCorcelText();
     setLoading(false);
-  }, [q])
+  }, [q]);
 
-  useEffect(() => {
-    if (!address) {
-      router.push("/");
-    }
-  }, [])
+  // useEffect(() => {
+  //   if (!address) {
+  //     router.push("/");
+  //   }
+  // }, [])
   return (
     <>
       <div className="flex flex-col items-center">
-        <div className="bottom-0 w-full flex justify-center mt-28 flex-col xl:flex-row">
-          <div className="flex-auto w-full xl:w-3/5" style={{ marginBottom: "100px" }}>
-            <div className="content-group-div mx-12 rounded-2xl p-4 content-group-left overflow-hidden xl:ml-12 xl:mr-4">
-              {summary ? summary.length > 0 && (
-                <Summary description={summary[0].choices[0].delta.content} />
-              ) : <div className="text-white text-2xl text-center">loading...</div>}
+        <div className="bottom-0 mt-28 flex w-full flex-col justify-center xl:flex-row">
+          <div
+            className="w-full flex-auto xl:w-3/5"
+            style={{ marginBottom: "100px" }}
+          >
+            <div className="content-group-div content-group-left mx-12 h-[72dvh] overflow-hidden rounded-2xl p-4 xl:ml-12 xl:mr-4">
+              {summary ? (
+                summary.length > 0 && (
+                  <Summary description={summary[0].choices[0].delta.content} />
+                )
+              ) : (
+                <div className="text-center text-2xl text-white">
+                  loading...
+                </div>
+              )}
               {result && <RelevantLinks links={result.organic_results} />}
             </div>
           </div>
 
-          <div className="flex-auto w-full xl:w-2/5">
+          <div className="w-full flex-auto xl:w-2/5">
             {result && result.inline_images && (
-              <div className="content-group-div mx-12 xl:ml-4 xl:mr-12 mb-4 rounded-2xl p-4 content-group-right-first content-group-right1 overflow-hidden ">
-                <p className="text-white text-lg mb-3">Image</p>
+              <div className="content-group-div content-group-right-first content-group-right1 mx-12 mb-4 overflow-hidden rounded-2xl p-4 xl:ml-4 xl:mr-12">
+                <p className="mb-3 text-lg text-white">Image</p>
                 <div className="content-group-video">
-                  <div className="mb-3 ">
+                  <div className="mb-3">
                     {result.inline_images.map((image, index) => (
                       <ImageCard
                         key={index}
@@ -121,10 +128,10 @@ export default function Page() {
               </div>
             )}
             {result && result.inline_videos && (
-              <div className="content-group-div mx-12 xl:ml-4 xl:mr-12 mb-4 rounded-2xl p-4 content-group-right-first content-group-right1 overflow-hidden ">
-                <p className="text-white text-lg mb-3">Video</p>
+              <div className="content-group-div content-group-right-first content-group-right1 mx-12 mb-4 overflow-hidden rounded-2xl p-4 xl:ml-4 xl:mr-12">
+                <p className="mb-3 text-lg text-white">Video</p>
                 <div className="content-group-video">
-                  <div className="mb-3 ">
+                  <div className="mb-3">
                     {result &&
                       result.inline_videos &&
                       result.inline_videos.map((video, index) => (
@@ -141,8 +148,8 @@ export default function Page() {
               </div>
             )}
 
-            <div className="content-group-div mx-12 xl:ml-4 xl:mr-12 rounded-2xl p-4 content-group-right-first content-group-right2 overflow-hidden">
-              {result ?
+            <div className="content-group-div content-group-right-first content-group-right2 mx-12 overflow-hidden rounded-2xl p-4 xl:ml-4 xl:mr-12">
+              {result ? (
                 result.related_searches &&
                 result.related_searches.map((related, index) => (
                   <RelatedLink
@@ -150,7 +157,12 @@ export default function Page() {
                     link={related.link}
                     query={related.query}
                   />
-                )): <div className="text-white text-2xl text-center">loading...</div>}
+                ))
+              ) : (
+                <div className="text-center text-2xl text-white">
+                  loading...
+                </div>
+              )}
             </div>
           </div>
         </div>

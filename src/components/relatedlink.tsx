@@ -10,10 +10,10 @@ type RelatedLinkProps = {
 
 const RelatedLink: React.FC<RelatedLinkProps> = ({ link, query }) => {
   return (
-    <div className="content-div rounded-2xl mb-4 p-4 video-containers">
-      <div className="mb-3 h-6 text-white flex items-center">
+    <div className="content-div video-containers flex items-center justify-start rounded-2xl p-4">
+      <div className="flex h-6 items-center gap-2 text-white">
         {/* Replace img with Image from next/image */}
-        <div className="h-5 w-5 text-gray-500 mr-3 relative">
+        <div className="relative h-5 px-3 text-gray-500">
           <Image
             src="/search-normal.svg"
             alt="Search Icon"
@@ -21,9 +21,20 @@ const RelatedLink: React.FC<RelatedLinkProps> = ({ link, query }) => {
             objectFit="contain"
           />
         </div>
-        <p className="text-base inline-block relatedlink-text-container">
-          <Link href={link}>{query}</Link>
-        </p>
+        <div
+          className="relatedlink-text-container inline text-base max-md:max-w-[20px]"
+          style={{ maxWidth: "160px" }}
+        >
+          <p
+            style={{
+              whiteSpace: "nowrap",
+              overflow: "hidden",
+              textOverflow: "ellipsis",
+            }}
+          >
+            <Link href={link}>{query}</Link>
+          </p>
+        </div>
       </div>
     </div>
   );
