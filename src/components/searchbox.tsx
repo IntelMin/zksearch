@@ -22,12 +22,12 @@ const SearchBox: React.FC<SearchComponentProps> = ({ className }) => {
     e.preventDefault();
     const term = searchInputRef.current?.value || "";
     if (!term.trim()) return;
-    if (isConnected){
+    // if (isConnected){
       router.push(`/search?q=${encodeURIComponent(term.trim())}`);
-    }
-    else {
-      toast.error("Please sign in to your wallet");
-    }
+    // }
+    // else {
+    //   toast.error("Please sign in to your wallet");
+    // }
     
   };
 
