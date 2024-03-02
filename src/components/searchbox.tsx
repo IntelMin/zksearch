@@ -37,14 +37,14 @@ const SearchBox: React.FC<SearchComponentProps> = ({ className }) => {
       onSubmit={search}
     >
       <div
-        className={`flex border border-gray-700 hover:shadow-lg focus-within:shadow-lg px-5 py-2.5 rounded-lg items-center shadow bg-opacity-5 ${className}`}
+        className={`flex border border-gray-700 hover:shadow-lg focus-within:shadow-lg px-5 py-1 rounded-lg items-center shadow bg-opacity-5 ${className}`}
       >
         <Image
           width={20}
           height={20}
           src="/search-normal.svg"
           alt="Search Icon"
-          className="h-5 w-5 text-gray-500 mr-3"
+          className="h-4 w-4 text-gray-500 mr-3"
         />
         <input
           type="text"

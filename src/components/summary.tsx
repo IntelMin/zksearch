@@ -31,7 +31,7 @@ const Summary: React.FC<SummaryProps> = ({ description }) => {
   },[description])
   
   return (
-    <ScrollArea className="content-div rounded-2xl mb-4 p-4">
+    <ScrollArea className="content-div rounded-xl mb-4 p-4">
       <p className="text-white text-lg mb-3">Summary</p>
       {description?.split(". ").map((des: string, index)=>
         <p key={index} className="text-base description-color">{des+"."}</p>)}

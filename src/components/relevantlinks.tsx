@@ -6,7 +6,7 @@ import React from "react";
 
 const RelevantLinks: React.FC<{ links: OrganicResult[] }> = ({ links }) => {
   return (
-    <ScrollArea className="content-div rounded-2xl mb-4 p-4">
+    <ScrollArea className="content-div rounded-xl mb-4 p-4">
       <p className="text-white text-lg mb-3">Relevant Links:</p>
 
       <div className="relevant-links">
@@ -14,7 +14,7 @@ const RelevantLinks: React.FC<{ links: OrganicResult[] }> = ({ links }) => {
           <div key={link.link} className="relevant-link">
             {" "}
             {/* Use link.link as the key */}
-            <p className="text-base description-color">
+            <p className="text-base underline description-color">
               {index + 1}.{" "}
               <a href={link.link} target="_blank" rel="noopener noreferrer">
                 {link.title}

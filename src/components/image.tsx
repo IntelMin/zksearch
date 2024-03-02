@@ -10,7 +10,7 @@ interface ImageCardProps {
 // Use the custom Image component within your ImageCard component
 const ImageCard: React.FC<ImageCardProps> = ({ imageUrl, title, url }) => {
   return (
-    <div className="content-div w-/6 mr-1.5 rounded-2xl p-4 content-group-right1-video video-container">
+    <div className="content-div w-/6 mr-1.5 rounded-xl p-4 content-group-right1-video video-container">
       <div className="mb-3 h-6 text-white">
         <div className="image-container">
           <a href={url} target="_blank" rel="noopener noreferrer">
