@@ -11,8 +11,8 @@ export default function Home() {
       <div className="m-auto w-full">
         <Image
           className="w-88 mb-8 m-auto"
-          width="75"
-          height="25"
+          width={75}
+          height={25}
           objectFit="cover"
           src={logoImg}
           alt="logo"

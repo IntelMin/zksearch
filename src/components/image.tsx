@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 
 // Define the props for your ImageCard component
 interface ImageCardProps {
@@ -14,11 +15,12 @@ const ImageCard: React.FC<ImageCardProps> = ({ imageUrl, title, url }) => {
       <div className="mb-3 h-6 text-white">
         <div className="image-container">
           <a href={url} target="_blank" rel="noopener noreferrer">
-            <img
-              className="inline-block mr-2 rounded-lg"
+            <Image
+              className="inline-block mr-2 rounded-lg ml-1"
               src={imageUrl}
               alt={title}
-              style={{ width: "160px", height: "100px", marginLeft: "4px" }}
+              width={160}
+              height={160}
             />
           </a>
         </div>

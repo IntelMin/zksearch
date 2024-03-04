@@ -44,7 +44,7 @@ const Header = () => {
     if (!address) {
       router.push("/");
     }
-  }, []);
+  }, [address, router]);
 
   return (
     <div
@@ -69,7 +69,12 @@ const Header = () => {
           className="ml-auto flex h-12 w-12 cursor-pointer rounded-full border bg-stone-900 bg-opacity-70 p-4 hover:bg-stone-500 hover:text-stone-700"
           onClick={() => setViewsign(!viewsign)}
         >
-          <Image src={userImg} alt={userImg}></Image>
+          <Image 
+            src={userImg} 
+            alt={userImg}
+            width={48}
+            height={48}
+          />
         </div>
         {viewsign && (
           <motion.main

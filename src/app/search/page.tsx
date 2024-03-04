@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { Result } from "../../data/ducktypes";
 import Summary from "@/components/summary";
@@ -24,7 +24,7 @@ export default function Page() {
   const [summary, setSummary] = useState<DataEntry[]>();
   const [loading, setLoading] = useState<boolean>(true);
 
-  async function fetchCorcelText() {
+  const fetchCorcelText = useCallback(async () => {
     try {
       const response = await fetch("/api/corcel", {
         method: "POST",
@@ -48,9 +48,9 @@ export default function Page() {
     } catch (error) {
       console.error("Error fetching data:", error);
     }
-  }
+  }, [q]);
 
-  async function fetchDuckData() {
+  const fetchDuckData = useCallback(async () => {
     try {
       const response = await fetch("/api/duck", {
         method: "POST",
@@ -75,9 +75,9 @@ export default function Page() {
     } catch (error) {
       console.error("Error fetching data:", error);
     }
-  }
+  }, [q]);
 
-  const fetchData = async () => {
+  const fetchData = useCallback(async () => {
     try {
       setLoading(true);
       await fetchDuckData();
@@ -86,17 +86,17 @@ export default function Page() {
     } catch (error) {
       console.error("Error fetching data:", error);
     }
-  };
+  }, [fetchCorcelText, fetchDuckData]);
 
   useEffect(() => {
     fetchData();
-  }, [q]);
+  }, [q, fetchData]);
 
   useEffect(() => {
     if (!address) {
       router.push("/");
     }
-  }, []);
+  }, [address, router]);
 
   return (
     <>
