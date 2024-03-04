@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
-import { Result } from "../../data/ducktypes";
+import { Result } from "../../data/googletypes";
 import Summary from "@/components/summary";
 import RelevantLinks from "@/components/relevantlinks";
 import RelatedLink from "@/components/relatedlink";
@@ -21,6 +21,7 @@ export default function Page() {
   const searchParams = useSearchParams();
   const q = searchParams.get("q");
   const [result, setResult] = useState<Result>();
+  const [suggest, setSuggest] = useState<string[]>([]);
   const [summary, setSummary] = useState<DataEntry[]>();
   const [loading, setLoading] = useState<boolean>(true);
 
@@ -77,11 +78,69 @@ export default function Page() {
     }
   }
 
+  async function fetchGoogleData() {
+    try {
+      const response = await fetch("/api/google", {
+        method: 'POST',
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ query: q }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to fetch data from server');
+      }
+
+      const responseData = await response.json();
+
+      const { data } = responseData;
+
+      setResult(data)
+      if (!data || !Array.isArray(data)) {
+        throw new Error('Invalid data format received from server');
+      }
+
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
+  }
+
+  async function fetchSuggestionData() {
+    try {
+      const response = await fetch("/api/suggest", {
+        method: 'POST',
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ query: q }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to fetch data from server');
+      }
+
+      const responseData = await response.json();
+
+      const { data } = responseData;
+
+      setSuggest(data)
+      if (!data || !Array.isArray(data)) {
+        throw new Error('Invalid data format received from server');
+      }
+
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
+  }
+
   const fetchData = async () => {
     try {
       setLoading(true);
-      await fetchDuckData();
+      // await fetchDuckData();
       await fetchCorcelText();
+      await fetchGoogleData();
+      await fetchSuggestionData();
       setLoading(false);
     } catch (error) {
       console.error("Error fetching data:", error);
@@ -99,7 +158,7 @@ export default function Page() {
           <div
             className="flex-auto w-full xl:w-3/5"
           >
-            <div className="content-group-div mx-12 rounded-xl p-4 content-group-left xl:ml-12 xl:mr-4">
+            <div className="content-group-div mx-12 rounded-2xl p-4 content-group-left xl:ml-12 xl:mr-4 xl:mb-0 mb-4">
               {loading ? (
                 <div className="content-div rounded-2xl mb-4 p-4 flex flex-col gap-4">
                   <Skeleton className="w-32 h-7 rounded-full" />
@@ -134,42 +193,41 @@ export default function Page() {
                       <Skeleton className="w-[48vw] h-5 rounded-full" />
                     </div>
                   </div>
-                </div>
-              ) : (
-                <>
-                  {result && <RelevantLinks links={result.organic_results} />}
-                </>
-              )}
+                </div>) : (<>
+                {result && <RelevantLinks links={result.items} />}
+              </>)}
             </div>
           </div>
 
-          <div className="flex-auto w-full mb-32 xl:w-2/5">
-            {result && result.inline_images && (
+          <div className="flex-auto w-full xl:w-2/5">
+            {result && result.items && (
               <div className="content-group-div mx-12 xl:ml-4 xl:mr-12 mb-4 rounded-2xl p-4 content-group-right-first content-group-right1 overflow-hidden ">
                 <p className="text-white text-lg mb-3">Image</p>
                 <div className="content-group-video">
+                  <ScrollArea>
                   {loading ? (
                     <div className="flex flex-row justify-around">
                       <Skeleton className="w-[10vw] h-[15vh]" />
                       <Skeleton className="w-[10vw] h-[15vh]" />
                       <Skeleton className="w-[10vw] h-[15vh]" />
-                    </div>
-                  ) : (
-                    <>
-                      {result.inline_images.map((image, index) => (
-                        <ImageCard
-                          key={index}
-                          imageUrl={image.thumbnail}
-                          title={image.title}
-                          url={image.link}
-                        />
-                      ))}
-                    </>
-                  )}
+                    </div>) : (<>
+                      {result.items.map((image, index) => {
+                          return (
+                          image.pagemap?.cse_image &&
+                          <ImageCard
+                            key={index}
+                            imageUrl={image.pagemap.cse_image[0].src}
+                            title={image.title}
+                            url={image.pagemap.cse_image[0].src}
+                          />
+                          )
+                        } 
+                      )}
+                    </>)}
+                  </ScrollArea>
                 </div>
-              </div>
-            )}
-            {result && result.inline_videos && (
+              </div>)}
+            {/* {result && result.inline_videos && (
               <div className="content-group-div mx-12 xl:ml-4 xl:mr-12 mb-4 rounded-2xl p-4 content-group-right-first content-group-right1 overflow-hidden ">
                 <p className="text-white text-lg mb-3">Video</p>
                 <div className="content-group-video">
@@ -196,28 +254,23 @@ export default function Page() {
                   )}
                 </div>
               </div>
-            )}
+            )} */}
 
             <ScrollArea className="content-group-div mx-12 xl:ml-4 xl:mr-12 rounded-2xl p-4 content-group-right-first content-group-right2 overflow-hidden">
-              {loading ? (
-                <div className="flex flex-row justify-around">
-                  <Skeleton className="w-[10vw] h-[5vh]" />
-                  <Skeleton className="w-[10vw] h-[5vh]" />
-                  <Skeleton className="w-[10vw] h-[5vh]" />
-                </div>
-              ) : (
-                <>
-                  {result &&
-                    result.related_searches &&
-                    result.related_searches.map((related, index) => (
-                      <RelatedLink
-                        key={index}
-                        link={related.link}
-                        query={related.query}
-                      />
-                    ))}
-                </>
-              )}
+              {loading ? (<div className="flex flex-row justify-around">
+                <Skeleton className="w-[14vw] h-[5vh]" />
+                <Skeleton className="w-[14vw] h-[5vh]" />
+              </div>) : (<>
+                {suggest &&
+                  suggest.map((sug, index) => (
+                    <RelatedLink
+                      key={index}
+                      link={'/search?q='+sug}
+                      query={sug}
+                    />
+                  ))
+                }
+              </>)}
             </ScrollArea>
           </div>
         </div>

@@ -63,11 +63,6 @@ header {
   color: #d1d5db;
 }
 
-.description-color:hover {
-  font-family: "actor", sans-serif; /* Change "actor" to the actual font name */
-  color: #ffffff;
-}
-
 .image-container {
   margin-bottom: 10px; /* Adjust margin as needed */
 }
@@ -87,7 +82,6 @@ header {
 .content-div {
   background-color: #20292d;
 }
-
 
 .content-group-left {
 }
@@ -158,13 +152,4 @@ header {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-}
-
-.whitepaper-link {
-  color: #b1b1b1; /* Dark gray color */
-  text-decoration: none; /* Remove underline */
-}
-
-.whitepaper-link:hover {
-  color: #ffffff; /* Turquoise color */
 }

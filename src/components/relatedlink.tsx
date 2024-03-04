@@ -10,7 +10,7 @@ type RelatedLinkProps = {
 
 const RelatedLink: React.FC<RelatedLinkProps> = ({ link, query }) => {
   return (
-    <div className="content-div rounded-xl mb-4 p-4 video-containers">
+    <div className="content-div rounded-2xl mb-4 p-4 video-containers">
       <div className="h-6 text-white flex items-center">
         {/* Replace img with Image from next/image */}
         <div className="h-5 w-5 text-gray-500 mr-3 relative">

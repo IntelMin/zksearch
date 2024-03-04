@@ -10,16 +10,26 @@ import { Toaster } from "react-hot-toast";
 import OGIMG from "../../public/og.png";
 
 const inter = Inter({ subsets: ["latin"] });
+const domain = process.env.DOMAIN || "";
 const title = "zKSearch";
 const description =
   "zkSearch is a privacy-centric search engine crafted within the ZKML ecosystem, utilising established privacy-focused technologies while refraining from storing user data. It harnesses the power of Bittensor to deliver AI-driven search capabilities within the secure confines of the ZKML subnet, ensuring heightened levels of privacy and security.";
+const ogimage = OGIMG.src;
 
 export const metadata: Metadata = {
   title: title,
   description: description,
-  ogImage: {
-    url: "/og.png",
-    alt: "zkSearch",
+  openGraph: {
+    type: "website",
+    url: domain,
+    title: title,
+    description: description,
+    siteName: domain,
+    images: [
+      {
+        url: ogimage,
+      },
+    ],
   },
 };
 
@@ -47,7 +57,7 @@ export default function RootLayout({
           </div>
           <Toaster
             position="top-center"
-            containerStyle={{ backgroundColor: "#000" }}
+            containerStyle={{ backgroundColor: "#black" }}
           />
         </Providers>
       </body>
