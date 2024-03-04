@@ -128,7 +128,7 @@ export default function Page() {
           <div
             className="flex-auto w-full xl:w-3/5"
           >
-            <div className="content-group-div mx-12 rounded-2xl p-4 content-group-left xl:ml-12 xl:mr-4">
+            <div className="content-group-div mx-12 rounded-2xl p-4 content-group-left xl:ml-12 xl:mr-4 xl:mb-0 mb-4">
               {loading ? (
                 <div className="content-div rounded-2xl mb-4 p-4 flex flex-col gap-4">
                   <Skeleton className="w-32 h-7 rounded-full" />
@@ -163,8 +163,7 @@ export default function Page() {
                       <Skeleton className="w-[48vw] h-5 rounded-full" />
                     </div>
                   </div>
-                </div>
-              </div>) : (<>
+                </div>) : (<>
                 {result && <RelevantLinks links={result.items} />}
               </>)}
             </div>
@@ -175,6 +174,7 @@ export default function Page() {
               <div className="content-group-div mx-12 xl:ml-4 xl:mr-12 mb-4 rounded-2xl p-4 content-group-right-first content-group-right1 overflow-hidden ">
                 <p className="text-white text-lg mb-3">Image</p>
                 <div className="content-group-video">
+                  <ScrollArea>
                   {loading ? (
                     <div className="flex flex-row justify-around">
                       <Skeleton className="w-[10vw] h-[15vh]" />
@@ -196,8 +196,7 @@ export default function Page() {
                     </>)}
                   </ScrollArea>
                 </div>
-              </div>
-            )}
+              </div>)}
             {/* {result && result.inline_videos && (
               <div className="content-group-div mx-12 xl:ml-4 xl:mr-12 mb-4 rounded-2xl p-4 content-group-right-first content-group-right1 overflow-hidden ">
                 <p className="text-white text-lg mb-3">Video</p>
