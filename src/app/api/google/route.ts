@@ -6,12 +6,10 @@ export async function POST(req: Request) {
         const { query } = json;
 
         const base_url = "https://www.googleapis.com/customsearch/v1";
-        const apiKey = 'AIzaSyDVvPDaKu2rgbIKblRHtMce4SIZ7YXQZ9k';
-        const cx = '358882861304c4224';
-        
+
         const params = new URLSearchParams({
-          key: apiKey,
-          cx: cx,
+          key: process.env.GOOGLE_API_KEY || '',
+          cx: process.env.GOOGLE_API_CX || '',
           q: query,
         });
         
