@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
-import { Result } from "../../data/googletypes";
+import { GoogleSearchResponse } from "../../data/googletypes";
 import Summary from "@/components/summary";
 import RelevantLinks from "@/components/relevantlinks";
 import RelatedLink from "@/components/relatedlink";
@@ -20,7 +20,7 @@ export default function Page() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const q = searchParams.get("q");
-  const [result, setResult] = useState<Result>();
+  const [result, setResult] = useState<GoogleSearchResponse>();
   const [suggest, setSuggest] = useState<string[]>([]);
   const [summary, setSummary] = useState<DataEntry[]>();
   const [loading, setLoading] = useState<boolean>(true);
