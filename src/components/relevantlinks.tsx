@@ -15,7 +15,7 @@ const RelevantLinks: React.FC<{ links: OrganicResult[] }> = ({ links }) => {
             {" "}
             {/* Use link.link as the key */}
             <p className="text-base description-color ml-2">
-              {link.pagemap.cse_thumbnail && <img
+              {link.pagemap?.cse_thumbnail && <img
                 className="inline-block mr-2 rounded-lg"
                 src={link.pagemap.cse_thumbnail[0]?.src}
                 alt={link.title}

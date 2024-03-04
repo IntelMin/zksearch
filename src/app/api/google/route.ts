@@ -26,7 +26,7 @@ export async function POST(req: Request) {
             { status: 200, headers: { 'Content-Type': 'application/json' }, data: results }
         );
     } catch (error) {
-        console.error('Error fetching DuckDuckGo data:', error);
+        console.error('Error fetching Google data:', error);
         return NextResponse.json(
             { error: error },
             { status: 500 }

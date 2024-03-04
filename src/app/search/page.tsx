@@ -21,6 +21,7 @@ export default function Page() {
   const searchParams = useSearchParams();
   const q = searchParams.get("q");
   const [result, setResult] = useState<Result>();
+  const [suggest, setSuggest] = useState<string[]>([]);
   const [summary, setSummary] = useState<DataEntry[]>();
   const [loading, setLoading] = useState<boolean>(true);
 
@@ -105,12 +106,41 @@ export default function Page() {
     }
   }
 
+  async function fetchSuggestionData() {
+    try {
+      const response = await fetch("/api/suggest", {
+        method: 'POST',
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ query: q }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to fetch data from server');
+      }
+
+      const responseData = await response.json();
+
+      const { data } = responseData;
+
+      setSuggest(data)
+      if (!data || !Array.isArray(data)) {
+        throw new Error('Invalid data format received from server');
+      }
+
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
+  }
+
   const fetchData = async () => {
     try {
       setLoading(true);
       // await fetchDuckData();
-      await fetchGoogleData();
       await fetchCorcelText();
+      await fetchGoogleData();
+      await fetchSuggestionData();
       setLoading(false);
     } catch (error) {
       console.error("Error fetching data:", error);
@@ -183,7 +213,7 @@ export default function Page() {
                     </div>) : (<>
                       {result.items.map((image, index) => {
                           return (
-                          image.pagemap.cse_image &&
+                          image.pagemap?.cse_image &&
                           <ImageCard
                             key={index}
                             imageUrl={image.pagemap.cse_image[0].src}
@@ -231,16 +261,15 @@ export default function Page() {
                 <Skeleton className="w-[14vw] h-[5vh]" />
                 <Skeleton className="w-[14vw] h-[5vh]" />
               </div>) : (<>
-                {/* {result &&
-                  result.related_searches &&
-                  result.related_searches.map((related, index) => (
+                {suggest &&
+                  suggest.map((sug, index) => (
                     <RelatedLink
                       key={index}
-                      link={related.link}
-                      query={related.query}
+                      link={'/search?q='+sug}
+                      query={sug}
                     />
                   ))
-                } */}
+                }
               </>)}
             </ScrollArea>
           </div>
