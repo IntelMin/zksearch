@@ -18,7 +18,10 @@ const config: Config = {
       },
       backgroundColor: {
         muted: "#6e7681"
-      }
+      },
+      colors: {
+        'custom-gray': '#27272A',
+      },
     },
   },
   plugins: [],
