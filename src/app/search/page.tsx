@@ -96,9 +96,9 @@ export default function Page() {
       const { data } = responseData;
 
       setResult(data);
-      if (!data || !Array.isArray(data)) {
-        throw new Error("Invalid data format received from server");
-      }
+      // if (!data || !Array.isArray(data)) {
+      //   throw new Error("Invalid data format received from server");
+      // }
     } catch (error) {
       console.error("Error fetching data:", error);
     }
