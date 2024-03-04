@@ -48,25 +48,27 @@ const Header = () => {
 
   return (
     <div
-      className={`px-10 fixed w-full bg-opacity-70 z-10 ${
-        pathname === "/search" && "backdrop-blur"
-      }`}
+      className={`px-5 fixed w-full bg-opacity-70 z-10 ${pathname === "/search" && "backdrop-blur"
+        }`}
     >
-      <div className="flex w-full px-4 py-6">
+      <div className="flex w-full px-4 py-2">
         {pathname === "/search" && (
           <div className="flex">
-            <Image
-              width={48}
-              height={48}
-              src={logoImg}
-              alt="LOGO"
-              className="mr-8"
-            />
+            <a href="https://zksearch.zkml.systems/" target="_blank" rel="noopener noreferrer">
+              <Image
+                width={30}
+                height={30}
+                src={logoImg}
+                alt="LOGO"
+                className="mr-8 mt-2"
+              />
+            </a>
+
             <SearchBox />
           </div>
         )}
         <div
-          className="ml-auto flex h-12 w-12 cursor-pointer rounded-full border border-custom-gray bg-stone-900 bg-opacity-70 p-4 hover:bg-stone-500 hover:text-stone-700"
+          className="ml-auto flex h-11 w-11 cursor-pointer rounded-full border border-custom-gray bg-stone-900 bg-opacity-70 p-4 hover:bg-stone-500 hover:text-stone-700"
           onClick={() => setViewsign(!viewsign)}
         >
           <Image src={userImg} alt={`avatar`}></Image>
@@ -97,7 +99,7 @@ const Header = () => {
                     <p className="text-sm text-white">Sign In With Wallet</p>
                     <p className="text-sm text-white">To ZKML AI Search</p>
                     <p className="my-3 text-sm text-stone-500">
-                      You can see better result by sign in
+                      Connect your wallet for better results!
                     </p>
                   </div>
                   <div className="w-1/8 p-2">
