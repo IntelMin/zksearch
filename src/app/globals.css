@@ -8,10 +8,6 @@
   --background-end-rgb: 255, 255, 255;
 }
 
-::-webkit-scrollbar {
-  display: none;
-}
-
 @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;
@@ -67,6 +63,11 @@ header {
   color: #d1d5db;
 }
 
+.description-color:hover {
+  font-family: "actor", sans-serif; /* Change "actor" to the actual font name */
+  color: #ffffff;
+}
+
 .image-container {
   margin-bottom: 10px; /* Adjust margin as needed */
 }
@@ -86,6 +87,7 @@ header {
 .content-div {
   background-color: #20292d;
 }
+
 
 .content-group-left {
 }
@@ -127,8 +129,7 @@ header {
   width: calc(
     33.33% - 20px
   ); /* Adjust width to fit three images per line with margins */
-  margin-right: 20px; /* Add right margin to create space between images */
-  margin-bottom: 20px; /* Add bottom margin to create space between lines */
+  margin: 10px; /* Add right margin to create space between images */
   float: left; /* Allow images to float next to each other */
   box-sizing: border-box; /* Include padding and border in element's total width and height */
 }
@@ -157,4 +158,13 @@ header {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+}
+
+.whitepaper-link {
+  color: #b1b1b1; /* Dark gray color */
+  text-decoration: none; /* Remove underline */
+}
+
+.whitepaper-link:hover {
+  color: #ffffff; /* Turquoise color */
 }

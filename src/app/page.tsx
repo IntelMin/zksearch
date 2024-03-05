@@ -5,10 +5,12 @@ import logoImg from "../../public/logo.svg";
 
 export default function Home() {
   return (
-    <main className="flex flex-col items-center justify-between pt-80">
+    <main
+      className="flex flex-col items-center justify-between pt-80"
+    >
       <div className="m-auto w-full">
         <Image
-          className="w-88 m-auto mb-8"
+          className="w-88 mb-8 m-auto"
           width="75"
           height="25"
           objectFit="cover"
