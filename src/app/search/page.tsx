@@ -151,16 +151,19 @@ export default function Page() {
   return (
     <>
       <div className="flex flex-col items-center">
-        <div className="bottom-0 w-full flex justify-center mt-[8rem] flex-col xl:flex-row mb-[120px]">
-          <div className="flex-auto w-full xl:w-3/5">
-            <div className="content-group-div mx-12 rounded-xl p-4 content-group-left xl:ml-12 xl:mr-4">
+        <div className="bottom-0 mb-[120px] mt-[7rem] flex w-full flex-col justify-center xl:flex-row">
+          <div className="w-full flex-auto xl:w-3/5">
+            <div
+              className="content-group-div content-group-left mx-12 rounded-xl p-4 xl:ml-12 xl:mr-4"
+              style={{ background: "rgba(255, 255, 255, 0.06)" }}
+            >
               {loading ? (
-                <div className="content-div rounded-2xl mb-4 p-4 flex flex-col gap-4">
-                  <Skeleton className="w-32 h-7 rounded-full" />
-                  <Skeleton className="w-[40vw] h-5 rounded-full" />
-                  <Skeleton className="w-[42vw] h-5 rounded-full" />
-                  <Skeleton className="w-[36vw] h-5 rounded-full" />
-                  <Skeleton className="w-[30vw] h-5 rounded-full" />
+                <div className="content-div mb-4 flex flex-col gap-4 rounded-2xl p-4">
+                  <Skeleton className="h-7 w-32 rounded-full" />
+                  <Skeleton className="h-5 w-[40vw] rounded-full" />
+                  <Skeleton className="h-5 w-[42vw] rounded-full" />
+                  <Skeleton className="h-5 w-[36vw] rounded-full" />
+                  <Skeleton className="h-5 w-[30vw] rounded-full" />
                 </div>
               ) : (
                 <>
@@ -172,20 +175,20 @@ export default function Page() {
                 </>
               )}
               {loading ? (
-                <div className="content-div rounded-2xl mb-4 p-4 flex flex-col gap-8">
-                  <Skeleton className="w-32 h-7 rounded-full" />
+                <div className="content-div mb-4 flex flex-col gap-8 rounded-2xl p-4">
+                  <Skeleton className="h-7 w-32 rounded-full" />
                   <div className="flex flex-col gap-6">
-                    <Skeleton className="w-[38vw] h-5 rounded-full" />
+                    <Skeleton className="h-5 w-[38vw] rounded-full" />
                     <div className="flex flex-col gap-4">
-                      <Skeleton className="w-[45vw] h-5 rounded-full" />
-                      <Skeleton className="w-[48vw] h-5 rounded-full" />
+                      <Skeleton className="h-5 w-[45vw] rounded-full" />
+                      <Skeleton className="h-5 w-[48vw] rounded-full" />
                     </div>
                   </div>
                   <div className="flex flex-col gap-6">
-                    <Skeleton className="w-[38vw] h-5 rounded-full" />
+                    <Skeleton className="h-5 w-[38vw] rounded-full" />
                     <div className="flex flex-col gap-4">
-                      <Skeleton className="w-[45vw] h-5 rounded-full" />
-                      <Skeleton className="w-[48vw] h-5 rounded-full" />
+                      <Skeleton className="h-5 w-[45vw] rounded-full" />
+                      <Skeleton className="h-5 w-[48vw] rounded-full" />
                     </div>
                   </div>
                 </div>
@@ -195,16 +198,19 @@ export default function Page() {
             </div>
           </div>
 
-          <div className="flex-auto w-full mb-32 xl:w-2/5">
+          <div className="mb-32 w-full flex-auto xl:w-2/5">
             {result && result.items && (
-              <div className="content-group-div mx-12 xl:ml-4 xl:mr-12 mb-4 rounded-2xl p-4 content-group-right-first content-group-right1 overflow-hidden ">
-                <p className="text-white text-lg mb-3">Image</p>
+              <div
+                className="content-group-div content-group-right-first content-group-right1 mx-12 mb-4 overflow-hidden rounded-2xl p-4 xl:ml-4 xl:mr-12"
+                style={{ background: "rgba(255, 255, 255, 0.06)" }}
+              >
+                <p className="mb-3 text-lg text-white">Image</p>
                 <div className="content-group-video">
                   {loading ? (
                     <div className="flex flex-row justify-around">
-                      <Skeleton className="w-[10vw] h-[15vh]" />
-                      <Skeleton className="w-[10vw] h-[15vh]" />
-                      <Skeleton className="w-[10vw] h-[15vh]" />
+                      <Skeleton className="h-[15vh] w-[10vw]" />
+                      <Skeleton className="h-[15vh] w-[10vw]" />
+                      <Skeleton className="h-[15vh] w-[10vw]" />
                     </div>
                   ) : (
                     <>
@@ -226,14 +232,14 @@ export default function Page() {
               </div>
             )}
             {/* {result && result.inline_videos && (
-              <div className="content-group-div mx-12 xl:ml-4 xl:mr-12 mb-4 rounded-2xl p-4 content-group-right-first content-group-right1 overflow-hidden ">
-                <p className="text-white text-lg mb-3">Video</p>
+              <div className="content-group-div content-group-right-first content-group-right1 mx-12 mb-4 overflow-hidden rounded-2xl p-4 xl:ml-4 xl:mr-12">
+                <p className="mb-3 text-lg text-white">Video</p>
                 <div className="content-group-video">
                   {loading ? (
                     <div className="flex flex-row justify-around">
-                      <Skeleton className="w-[10vw] h-[15vh]" />
-                      <Skeleton className="w-[10vw] h-[15vh]" />
-                      <Skeleton className="w-[10vw] h-[15vh]" />
+                      <Skeleton className="h-[15vh] w-[10vw]" />
+                      <Skeleton className="h-[15vh] w-[10vw]" />
+                      <Skeleton className="h-[15vh] w-[10vw]" />
                     </div>
                   ) : (
                     <>
@@ -254,12 +260,15 @@ export default function Page() {
               </div>
             )} */}
 
-            <ScrollArea className="content-group-div mx-12 xl:ml-4 xl:mr-12 rounded-2xl p-4 content-group-right-first content-group-right2 overflow-hidden">
+            <ScrollArea
+              className="content-group-div content-group-right-first content-group-right2 mx-12 overflow-hidden rounded-2xl p-4 xl:ml-4 xl:mr-12"
+              style={{ background: "rgba(255, 255, 255, 0.06)" }}
+            >
               {loading ? (
                 <div className="flex flex-row justify-around">
-                  <Skeleton className="w-[10vw] h-[5vh]" />
-                  <Skeleton className="w-[10vw] h-[5vh]" />
-                  <Skeleton className="w-[10vw] h-[5vh]" />
+                  <Skeleton className="h-[5vh] w-[10vw]" />
+                  <Skeleton className="h-[5vh] w-[10vw]" />
+                  <Skeleton className="h-[5vh] w-[10vw]" />
                 </div>
               ) : (
                 <>

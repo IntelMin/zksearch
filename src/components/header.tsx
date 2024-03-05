@@ -48,19 +48,24 @@ const Header = () => {
 
   return (
     <div
-      className={`px-5 fixed w-full bg-opacity-70 z-10 ${pathname === "/search" && "backdrop-blur"
-        }`}
+      className={`px-5  fixed w-full bg-opacity-70 z-10 ${
+        pathname === "/search" && "backdrop-blur"
+      }`}
     >
-      <div className="flex w-full px-4 py-2">
+      <div className="flex w-full px-4 py-5">
         {pathname === "/search" && (
-          <div className="flex">
-            <a href="https://zksearch.zkml.systems/" target="_blank" rel="noopener noreferrer">
+          <div className="flex items-center">
+            <a
+              href="https://zksearch.zkml.systems/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <Image
-                width={30}
-                height={30}
+                width={45}
+                height={45}
                 src={logoImg}
                 alt="LOGO"
-                className="mr-8 mt-2"
+                className="mr-8"
               />
             </a>
 
