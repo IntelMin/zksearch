@@ -14,14 +14,13 @@ const RelevantLinks: React.FC<{ links: OrganicResult[] }> = ({ links }) => {
           <div key={link.link} className="relevant-link">
             {" "}
             {/* Use link.link as the key */}
-            <p className="text-base underline description-color">
-              {index + 1}.{" "}
-              <a href={link.link} target="_blank" rel="noopener noreferrer">
-                {link.title}
-              </a>
-            </p>
-            <br />
-            <p className="text-base description-color">{link.snippet}</p>{" "}
+            <a href={link.link} rel="noopener noreferrer">
+              <p className="text-base underline description-color">
+                {index + 1}. {link.title}
+              </p>
+              <br />
+              <p className="text-base description-color">{link.snippet}</p>{" "}
+            </a>
             {/* Use link.snippet */}
             <br />
           </div>
