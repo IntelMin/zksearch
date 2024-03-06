@@ -63,8 +63,9 @@ const Header = () => {
                 className="mr-8 mt-2"
               />
             </a>
-
-            <SearchBox />
+            <div className="absolute left-[100px] bg-[#27272A] rounded-md bg-opacity-80">
+              <SearchBox />
+          </div>
           </div>
         )}
         <div
