@@ -2,14 +2,13 @@ import SearchBox from "@/components/searchbox";
 import Image from "next/image";
 import React, { Suspense } from "react";
 import logoImg from "../../public/logo.svg";
-import { Input } from "@/components/ui/input"
 
 export default function Home() {
   return (
     <main
-      className="flex flex-col items-center justify-between pt-56"
+      className="flex flex-col items-center justify-between pt-80"
     >
-      <div className="m-auto md:w-full">
+      <div className="m-auto w-full">
         <Image
           className="w-88 mb-8 m-auto"
           width="75"
@@ -19,7 +18,6 @@ export default function Home() {
           alt="logo"
         />
         <SearchBox className="m-auto" />
-        
       </div>
     </main>
   );
