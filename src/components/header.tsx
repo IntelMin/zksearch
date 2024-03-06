@@ -51,7 +51,7 @@ const Header = () => {
       className={`px-5 fixed w-full bg-opacity-70 z-10 ${pathname === "/search" && "backdrop-blur"
         }`}
     >
-      <div className="flex w-full px-4 py-2">
+      <div className="flex w-full md:px-4 py-2">
         {pathname === "/search" && (
           <div className="flex">
             <a href="https://zksearch.zkml.systems/" target="_blank" rel="noopener noreferrer">
@@ -63,7 +63,7 @@ const Header = () => {
                 className="mr-8 mt-2"
               />
             </a>
-            <div className="absolute left-[100px] bg-[#27272A] rounded-md bg-opacity-80">
+            <div className="absolute md:left-[100px] left-[70px]  bg-[#27272A] rounded-md bg-opacity-80">
               <SearchBox />
           </div>
           </div>

@@ -150,10 +150,10 @@ export default function Page() {
 
   return (
     <>
-      <div className="flex flex-col items-center">
+      <div className="flex flex-col items-center md:space-auto space-y-2">
         <div className="bottom-0 w-full flex justify-center mt-[8rem] flex-col xl:flex-row mb-[120px]">
           <div className="flex-auto w-full xl:w-3/5">
-            <div className="content-group-div mx-12 rounded-xl p-4 content-group-left xl:ml-12 xl:mr-4">
+            <div className="content-group-div md:mx-12 mx-4 rounded-xl p-4 content-group-left xl:ml-12 xl:mr-4">
               {loading ? (
                 <div className="content-div rounded-2xl mb-4 p-4 flex flex-col gap-4">
                   <Skeleton className="w-32 h-7 rounded-full" />
@@ -195,9 +195,9 @@ export default function Page() {
             </div>
           </div>
 
-          <div className="flex-auto w-full mb-32 xl:w-2/5">
+          <div className="flex-auto w-full mb-32 xl:w-2/5 md:mt-auto mt-4">
             {result && result.items && (
-              <div className="content-group-div mx-12 xl:ml-4 xl:mr-12 mb-4 rounded-2xl p-4 content-group-right-first content-group-right1 overflow-hidden ">
+              <div className="content-group-div md:mx-12 mx-4 xl:ml-4 xl:mr-12 mb-4 rounded-2xl p-4 content-group-right-first content-group-right1 overflow-hidden ">
                 <p className="text-white text-lg mb-3">Image</p>
                 <div className="content-group-video">
                   {loading ? (
@@ -254,7 +254,7 @@ export default function Page() {
               </div>
             )} */}
 
-            <ScrollArea className="content-group-div mx-12 xl:ml-4 xl:mr-12 rounded-2xl p-4 content-group-right-first content-group-right2 overflow-hidden">
+            <ScrollArea className="content-group-div md:mx-12 mx-4 xl:ml-4 xl:mr-12 rounded-2xl p-4 content-group-right-first content-group-right2 overflow-hidden">
               {loading ? (
                 <div className="flex flex-row justify-around">
                   <Skeleton className="w-[10vw] h-[5vh]" />

@@ -49,8 +49,8 @@ const SearchBox: React.FC<SearchComponentProps> = ({ className }) => {
 <div className="flex ">
 
     <div className={`flex flex-col justify-center items-center border border-gray-700 hover:shadow-lg focus-within:shadow-lg px-5 py-1 rounded-lg  shadow bg-opacity-5 ${className}`}>
-    <div className={`flex  justify-center items-center ${open && "border-b"}  border-gray-700 `} onClick={()=>setOpen(!open)}>
-    <form onSubmit={search} className="flex justify-center items-center">
+    <div className={`flex w-full justify-center items-center ${open && "border-b"}  border-gray-700 `} onClick={()=>setOpen(!open)}>
+    <form onSubmit={search} className="flex justify-center items-center md:w-auto w-full">
 
     
     <Image
