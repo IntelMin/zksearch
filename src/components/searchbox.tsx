@@ -25,18 +25,19 @@ const SearchBox: React.FC<SearchComponentProps> = ({ className }) => {
     e.preventDefault();
     const term = searchInputRef.current?.value.trim();
     if (!term) return;
-    if (isConnected) {
-      router.push(`/search?q=${encodeURIComponent(term)}`);
-    } else {
-      // Handle not connected case, maybe show a modal or toast
-      toast.error("Please sign in to your wallet",{
-        style: {
-          borderRadius: '10px',
-          background: '#333',
-          color: '#fff',
-        },
-      });
-    }
+    router.push(`/search?q=${encodeURIComponent(term)}`);
+    // if (isConnected) {
+    
+    // } else {
+    //   Handle not connected case, maybe show a modal or toast
+    //   toast.error("Please sign in to your wallet",{
+    //     style: {
+    //       borderRadius: '10px',
+    //       background: '#333',
+    //       color: '#fff',
+    //     },
+    //   });
+    // }
   };
   const arr=[1,2,3,4,5,7,9,10]
 
@@ -74,13 +75,13 @@ const SearchBox: React.FC<SearchComponentProps> = ({ className }) => {
   open && (
     <div className="flex flex-col  items-start justify-start w-full text-start space-y-2 max-h-[230px] overflow-y-scroll scroll-m-2  ">
       {arr.map((item, index) => (
-        <li key={index} className="flex  items-center p-1 mt-1 px-1 space-x-3 w-full hover:bg-gray-800 rounded-md text-start " onClick={()=>setQuery("shad")}>
+        <li key={index} className="flex items-center p-1 mt-1 px-1 space-x-3 w-full hover:bg-gray-800 rounded-md text-start " onClick={()=>setQuery("shad")}>
           <Image
             width={20}
             height={20}
             src="/search-normal.svg"
             alt="Search Icon"
-            className="w-4 h-4 mr-3 text-gray-500"
+            className="w-4 h-4 mr-3 text-white"
           />
           Shad
         </li>

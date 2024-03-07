@@ -23,7 +23,7 @@ const Header = () => {
   const router = useRouter();
   const [viewsign, setViewsign] = useState(false);
   const { address, isConnected } = useAccount();
-
+  const [layout, setLayout] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -45,6 +45,9 @@ const Header = () => {
       router.push("/");
     }
   }, []);
+  const changeState = () => {
+    setLayout(!layout);
+  };
 
   return (
     <div
@@ -68,7 +71,7 @@ const Header = () => {
                 className="mr-8"
               />
             </a>
-            <div className="absolute md:left-[100px] left-[70px]  bg-[#27272A] rounded-md bg-opacity-80">
+            <div className={` md:left-[100px] left-[70px] ${layout ? "absolute" : "block"} ${layout ? "mt-[230px]" : "mt-auto"} bg-[#27272A] rounded-md bg-opacity-80`} onClick={changeState}>
               <SearchBox />
           </div>
           </div>
