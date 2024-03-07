@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     siteName: domain,
     images: [
       {
-        url: domain+"/og.png",
+        url: domain + "/og.png",
         alt: "zkSearch",
       },
     ],

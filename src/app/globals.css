@@ -8,6 +8,9 @@
   --background-end-rgb: 255, 255, 255;
 }
 
+::-webkit-scrollbar {
+  display: none;
+}
 @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;
@@ -88,7 +91,6 @@ header {
   background-color: #20292d;
 }
 
-
 .content-group-left {
 }
 
@@ -98,7 +100,7 @@ header {
 }
 
 .content-group-right1-video {
-  height: 190px;
+  height: 160px;
   width: 100px;
 }
 
