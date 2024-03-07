@@ -67,8 +67,8 @@ const Header = () => {
                 className="mr-8 mt-2"
               />
             </a>
-            <div className={` md:left-[100px] left-[70px] ${layout ? "absolute" : "block"} ${layout ? "mt-[230px]" : "mt-auto"} bg-[#27272A] rounded-md bg-opacity-80`} onClick={changeState}>
-              <SearchBox />
+            <div className={` md:left-[100px]  left-[70px] fixed bg-[#27272A] rounded-md bg-opacity-80`} onClick={changeState}>
+              <SearchBox layout={layout} />
             </div>
           </div>
         )}
