@@ -16,7 +16,7 @@ const RelevantLinks: React.FC<{ links: OrganicResult[] }> = ({ links }) => {
           <div key={link.link} className="relevant-link">
             {" "}
             {/* Use link.link as the key */}
-            <p className="description-color text-base underline">
+            <p className="description-color text-base underline hover:text-[#0be0eb]">
               {index + 1}.{" "}
               <a href={link.link} target="_blank" rel="noopener noreferrer">
                 {link.title}
