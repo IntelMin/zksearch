@@ -150,13 +150,10 @@ export default function Page() {
 
   return (
     <>
-      <div className="flex flex-col items-center">
-        <div className="bottom-0 mb-[120px] mt-[5rem] flex w-full flex-col justify-center xl:flex-row">
-          <div className="w-full flex-auto xl:w-3/5">
-            <div
-              className="content-group-div content-group-left mx-12 rounded-xl p-4 xl:ml-12 xl:mr-4"
-              style={{ background: "rgba(255, 255, 255, 0.06)" }}
-            >
+      <div className="flex flex-col items-center md:space-auto space-y-2">
+        <div className="bottom-0 w-full flex justify-center mt-[8rem] flex-col xl:flex-row mb-[120px]">
+          <div className="flex-auto w-full xl:w-3/5">
+            <div className="content-group-div md:mx-12 mx-4 rounded-xl p-4 content-group-left xl:ml-12 xl:mr-4">
               {loading ? (
                 <div className="content-div mb-4 flex flex-col gap-4 rounded-2xl p-4">
                   <Skeleton className="h-7 w-32 rounded-full" />
@@ -198,13 +195,10 @@ export default function Page() {
             </div>
           </div>
 
-          <div className="mb-32 w-full flex-auto xl:w-2/5">
+          <div className="flex-auto w-full mb-32 xl:w-2/5 md:mt-auto mt-4">
             {result && result.items && (
-              <div
-                className="content-group-div content-group-right-first content-group-right1 mx-12 mb-4 overflow-hidden rounded-2xl p-4 xl:ml-4 xl:mr-12"
-                style={{ background: "rgba(255, 255, 255, 0.06)" }}
-              >
-                <p className="mb-3 text-lg text-white">Image</p>
+              <div className="content-group-div md:mx-12 mx-4 xl:ml-4 xl:mr-12 mb-4 rounded-2xl p-4 content-group-right-first content-group-right1 overflow-hidden ">
+                <p className="text-white text-lg mb-3">Image</p>
                 <div className="content-group-video">
                   {loading ? (
                     <div className="flex flex-row justify-around">
@@ -260,10 +254,7 @@ export default function Page() {
               </div>
             )} */}
 
-            <ScrollArea
-              className="content-group-div content-group-right-first content-group-right2 mx-12 overflow-hidden rounded-2xl p-4 xl:ml-4 xl:mr-12"
-              style={{ background: "rgba(255, 255, 255, 0.06)" }}
-            >
+            <ScrollArea className="content-group-div md:mx-12 mx-4 xl:ml-4 xl:mr-12 rounded-2xl p-4 content-group-right-first content-group-right2 overflow-hidden">
               {loading ? (
                 <div className="flex flex-row justify-around">
                   <Skeleton className="h-[5vh] w-[10vw]" />
