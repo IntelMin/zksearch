@@ -58,22 +58,18 @@ const Header = () => {
       <div className="flex w-full md:px-4 py-2">
         {pathname === "/search" && (
           <div className="flex items-center">
-            <a
-              href="https://zksearch.zkml.systems/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <a href="https://zksearch.zkml.systems/" rel="noopener noreferrer">
               <Image
-                width={45}
-                height={45}
+                width={30}
+                height={30}
                 src={logoImg}
                 alt="LOGO"
-                className="mr-8"
+                className="mr-8 mt-2"
               />
             </a>
             <div className={` md:left-[100px] left-[70px] ${layout ? "absolute" : "block"} ${layout ? "mt-[230px]" : "mt-auto"} bg-[#27272A] rounded-md bg-opacity-80`} onClick={changeState}>
               <SearchBox />
-          </div>
+            </div>
           </div>
         )}
         <div
