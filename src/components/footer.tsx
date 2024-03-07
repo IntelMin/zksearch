@@ -13,26 +13,18 @@ const Footer = () => {
         pathname === "/search" && "backdrop-blur"
       }`}
     >
-      <div className="mx-auto flex w-full items-center border-t border-[#3F3F46] py-5">
-        <a
-          href="https://www.zkml.systems/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+      <div className="mx-auto flex w-full items-center border-t border-[#3F3F46] py-2">
+        <a href="https://www.zkml.systems/" rel="noopener noreferrer">
           <Image
-            width={30}
-            height={30}
+            width={20}
+            height={20}
             src={logoImg}
             className="footerImg ml-4"
             alt="logoimg"
           />
         </a>
 
-        <a
-          href="https://www.zkml.systems/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+        <a href="https://www.zkml.systems/" rel="noopener noreferrer">
           <p className="mx-2 text-white">ZKML</p>
         </a>
 
@@ -45,11 +37,7 @@ const Footer = () => {
           </a>
 
           <p className="mx-4 text-sm text-white">{"|"}</p>
-          <a
-            href="https://twitter.com/ZKMLsystems"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <a href="https://twitter.com/ZKMLsystems" rel="noopener noreferrer">
             <Image
               src={"./twitter-x.svg"}
               width={16}
@@ -59,11 +47,7 @@ const Footer = () => {
             />
           </a>
           <p className="mx-4 text-sm text-white">{"|"}</p>
-          <a
-            href="https://t.me/zkmlsystems"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <a href="https://t.me/zkmlsystems" rel="noopener noreferrer">
             <Image
               width={16}
               height={16}

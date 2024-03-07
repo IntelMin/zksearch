@@ -52,25 +52,21 @@ const Header = () => {
         pathname === "/search" && "backdrop-blur"
       }`}
     >
-      <div className="flex w-full px-4 py-5">
+      <div className="flex w-full px-4 py-2">
         {pathname === "/search" && (
           <div className="flex items-center">
-            <a
-              href="https://zksearch.zkml.systems/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <a href="https://zksearch.zkml.systems/" rel="noopener noreferrer">
               <Image
-                width={45}
-                height={45}
+                width={30}
+                height={30}
                 src={logoImg}
                 alt="LOGO"
-                className="mr-8"
+                className="mr-8 mt-2"
               />
             </a>
-            <div className="absolute left-[100px] bg-[#27272A] rounded-md bg-opacity-80">
+            <div className="absolute left-[100px] rounded-md bg-[#27272A] bg-opacity-80">
               <SearchBox />
-          </div>
+            </div>
           </div>
         )}
         <div
