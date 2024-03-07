@@ -25,12 +25,7 @@ const ImageCard: React.FC<ImageCardProps> = ({ imageUrl, title, url }) => {
     >
       <div className="mb-3 h-6 text-white">
         <div className="image-container">
-          <a
-            href={url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="aspect-square"
-          >
+          <a href={url} rel="noopener noreferrer" className="aspect-square">
             <Image
               className="mr-2 inline-block aspect-square rounded-lg bg-cover duration-100 ease-in-out hover:scale-[1.1] hover:transition-all"
               src={error ? placeholderImageUrl : imageUrl}

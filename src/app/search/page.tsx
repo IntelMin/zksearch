@@ -151,7 +151,7 @@ export default function Page() {
   return (
     <>
       <div className="flex flex-col items-center">
-        <div className="bottom-0 mb-[120px] mt-[7rem] flex w-full flex-col justify-center xl:flex-row">
+        <div className="bottom-0 mb-[120px] mt-[5rem] flex w-full flex-col justify-center xl:flex-row">
           <div className="w-full flex-auto xl:w-3/5">
             <div
               className="content-group-div content-group-left mx-12 rounded-xl p-4 xl:ml-12 xl:mr-4"
