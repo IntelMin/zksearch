@@ -13,6 +13,7 @@ import { useAccount } from "wagmi";
 import { useRouter } from "next/navigation";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Skeleton } from "@/components/ui/skeleton";
+import { Console } from "console";
 
 export default function Page() {
   const { address, isConnected } = useAccount();
@@ -198,11 +199,11 @@ export default function Page() {
           <div className="flex-auto w-full  xl:w-2/5 ">
             {result && result.items && (
               <div
-                className="content-group-div md:mx-12 mx-4 xl:ml-4 xl:mr-12 mb-4 rounded-2xl p-4 content-group-right-first content-group-right1 overflow-hidden "
+                className="content-group-div md:mx-12 mx-4 xl:ml-4 max-md:pr-9 xl:mr-12 mb-4 mt-3 rounded-2xl p-4 border-2 border-red-500 content-group-right-first content-group-right1 overflow-hidden "
                 style={{ background: "rgba(255, 255, 255, 0.06)" }}
               >
-                <p className="text-white text-lg mb-3">Image</p>
-                <div className="content-group-video">
+                <p className="text-white text-lg mb-1">Image</p>
+                <div className="content-group-video max-md:p-2   ">
                   {loading ? (
                     <div className="flex flex-row justify-around">
                       <Skeleton className="h-[15vh] w-[10vw]" />
@@ -228,6 +229,7 @@ export default function Page() {
                 </div>
               </div>
             )}
+
             {/* {result && result.inline_videos && (
               <div className="content-group-div content-group-right-first content-group-right1 mx-12 mb-4 overflow-hidden rounded-2xl p-4 xl:ml-4 xl:mr-12">
                 <p className="mb-3 text-lg text-white">Video</p>

@@ -14,7 +14,11 @@ const Footer = () => {
       }`}
     >
       <div className="mx-auto flex w-full items-center border-t border-[#3F3F46] py-2">
-        <a href="https://www.zkml.systems/" rel="noopener noreferrer">
+        <a
+          href="https://www.zkml.systems/"
+          rel="noopener noreferrer"
+          className="max-sm:mr-3 "
+        >
           <Image
             width={20}
             height={20}
@@ -43,7 +47,7 @@ const Footer = () => {
               width={16}
               height={16}
               alt="twitter"
-              className="twitterIcon"
+              className="twitterIcon mr-4"
             />
           </a>
           <p className="mx-4 text-sm text-white">{"|"}</p>
