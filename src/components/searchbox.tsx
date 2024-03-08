@@ -73,7 +73,7 @@ const SearchBox: React.FC<SearchComponentProps> = ({ className }) => {
                   onChange={handleInputChange}
                   type="search"
                   placeholder="What are you looking for..."
-                  className="md:w-[584px] mb-8 m-auto bg-transparent focus:outline-none focus:border-none border-none focus:ring-none hover:bg-transparent outline-none"
+                  className="flex-grow focus:outline-none bg-transparent text-white 2xl:w-[550px] xl:w-[450px] md:w-[350px] sm:w-[250px]"
                 />
               </form>
             </div>

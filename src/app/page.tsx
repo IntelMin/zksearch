@@ -6,7 +6,7 @@ import { Input } from "@/components/ui/input";
 
 export default function Home() {
   return (
-    <main className="flex flex-col items-center justify-between pt-80">
+    <main className="flex flex-col items-center justify-between md:pt-80 pt-[70%] ">
       <div className="m-auto md:w-full">
         <Image
           className="w-88 m-auto mb-8"
