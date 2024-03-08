@@ -9,11 +9,12 @@ const Footer = () => {
   const pathname = usePathname();
   return (
     <footer
-      className={`w-full px-10 fixed bottom-0 bg-opacity-70 ${pathname === "/search" && "backdrop-blur"
-        }`}
+      className={`w-full px-10 fixed bottom-0 bg-opacity-70 ${
+        pathname === "/search" && "backdrop-blur"
+      }`}
     >
       <div className="mx-auto flex w-full items-center border-t border-[#3F3F46] py-2">
-        <a href="https://www.zkml.systems/" target="_blank" rel="noopener noreferrer">
+        <a href="https://www.zkml.systems/" rel="noopener noreferrer">
           <Image
             width={20}
             height={20}
@@ -23,16 +24,20 @@ const Footer = () => {
           />
         </a>
 
-        <a href="https://www.zkml.systems/" target="_blank" rel="noopener noreferrer">
+        <a href="https://www.zkml.systems/" rel="noopener noreferrer">
           <p className="mx-2 text-white">ZKML</p>
         </a>
 
         <div className="ml-auto flex">
-        <a href="https://zkml.gitbook.io/doc/introduction" className="mx-4 text-sm whitepaper-link">Whitepaper</a>
-
+          <a
+            href="https://zkml.gitbook.io/doc/introduction"
+            className="whitepaper-link mx-4 text-sm"
+          >
+            Whitepaper
+          </a>
 
           <p className="mx-4 text-sm text-white">{"|"}</p>
-          <a href="https://twitter.com/ZKMLsystems" target="_blank" rel="noopener noreferrer">
+          <a href="https://twitter.com/ZKMLsystems" rel="noopener noreferrer">
             <Image
               src={"./twitter-x.svg"}
               width={16}
@@ -42,7 +47,7 @@ const Footer = () => {
             />
           </a>
           <p className="mx-4 text-sm text-white">{"|"}</p>
-          <a href="https://t.me/zkmlsystems" target="_blank" rel="noopener noreferrer">
+          <a href="https://t.me/zkmlsystems" rel="noopener noreferrer">
             <Image
               width={16}
               height={16}
@@ -52,7 +57,6 @@ const Footer = () => {
             />
           </a>
         </div>
-
       </div>
     </footer>
   );

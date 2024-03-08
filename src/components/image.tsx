@@ -1,4 +1,7 @@
+import Image from "next/image";
 import React from "react";
+
+const placeholderImageUrl = "./placeholder-img.svg";
 
 // Define the props for your ImageCard component
 interface ImageCardProps {
@@ -9,20 +12,32 @@ interface ImageCardProps {
 
 // Use the custom Image component within your ImageCard component
 const ImageCard: React.FC<ImageCardProps> = ({ imageUrl, title, url }) => {
+  const [error, setError] = React.useState(false);
+
+  const handleImgError = () => {
+    setError(true);
+  };
+
   return (
-    <div className="content-div w-/6 mr-1.5 rounded-xl p-4 content-group-right1-video video-container">
+    <div
+      className="content-div video-container content-group-right1-video mr-1.5 rounded-xl p-3"
+      style={{ background: "rgba(255, 255, 255, 0.05)" }}
+    >
       <div className="mb-3 h-6 text-white">
         <div className="image-container">
-          <a href={url} target="_blank" rel="noopener noreferrer">
-            <img
-              className="inline-block mr-2 rounded-lg"
-              src={imageUrl}
+          <a href={url} rel="noopener noreferrer" className="aspect-square">
+            <Image
+              className="mr-2 inline-block aspect-square rounded-lg bg-cover duration-100 ease-in-out hover:scale-[1.1] hover:transition-all"
+              src={error ? placeholderImageUrl : imageUrl}
               alt={title}
-              style={{ width: "100%", height: "130px", marginLeft: "4px" }}
+              width={500}
+              height={500}
+              onError={handleImgError}
+              style={{ width: "100%", height: "100px" }}
             />
           </a>
         </div>
-        <p className="text-lg text-truncate">{title}</p>
+        <p className="text-truncate text-lg">{title}</p>
       </div>
     </div>
   );

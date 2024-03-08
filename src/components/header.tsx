@@ -23,7 +23,7 @@ const Header = () => {
   const router = useRouter();
   const [viewsign, setViewsign] = useState(false);
   const { address, isConnected } = useAccount();
-
+  const [layout, setLayout] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -45,16 +45,20 @@ const Header = () => {
       router.push("/");
     }
   }, []);
+  const changeState = () => {
+    setLayout(!layout);
+  };
 
   return (
     <div
-      className={`px-5 fixed w-full bg-opacity-70 z-10 ${pathname === "/search" && "backdrop-blur"
-        }`}
+      className={`px-5  fixed w-full bg-opacity-70 z-10 ${
+        pathname === "/search" && "backdrop-blur"
+      }`}
     >
-      <div className="flex w-full px-4 py-2">
+      <div className="flex w-full md:px-4 py-2">
         {pathname === "/search" && (
-          <div className="flex">
-            <a href="https://zksearch.zkml.systems/" target="_blank" rel="noopener noreferrer">
+          <div className="flex items-center">
+            <a href="https://zksearch.zkml.systems/" rel="noopener noreferrer">
               <Image
                 width={30}
                 height={30}
@@ -63,8 +67,9 @@ const Header = () => {
                 className="mr-8 mt-2"
               />
             </a>
-
-            <SearchBox />
+            <div className={` md:left-[100px]  left-[70px] fixed bg-[#27272A] rounded-md bg-opacity-80`} onClick={changeState}>
+              <SearchBox layout={layout} />
+            </div>
           </div>
         )}
         <div
