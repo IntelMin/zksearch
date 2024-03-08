@@ -20,7 +20,7 @@ const ImageCard: React.FC<ImageCardProps> = ({ imageUrl, title, url }) => {
 
   return (
     <div
-      className="content-div video-container content-group-right1-video mr-1.5 rounded-xl p-3"
+      className="content-div  video-container content-group-right1-video mr-1.5 rounded-xl p-3"
       style={{ background: "rgba(255, 255, 255, 0.05)" }}
     >
       <div className="mb-3 h-6 text-white">
