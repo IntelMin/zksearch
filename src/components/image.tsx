@@ -20,20 +20,19 @@ const ImageCard: React.FC<ImageCardProps> = ({ imageUrl, title, url }) => {
 
   return (
     <div
-      className="content-div  video-container content-group-right1-video mr-1.5 rounded-xl p-3"
+      className="content-div  video-container content-group-right1-video mr-1.5 max-md:aspect-square rounded-xl p-3"
       style={{ background: "rgba(255, 255, 255, 0.05)" }}
     >
-      <div className="mb-3 h-6 text-white">
-        <div className="image-container">
+      <div className="mb-3 md:h-6 text-white  ">
+        <div className="image-container  ">
           <a href={url} rel="noopener noreferrer" className="aspect-square">
             <Image
-              className="mr-2 inline-block aspect-square rounded-lg bg-cover duration-100 ease-in-out hover:scale-[1.1] hover:transition-all"
+              className="mr-2 inline-block aspect-square w-full md:h-[100px] h-[105px] rounded-lg bg-cover duration-100 ease-in-out md:hover:scale-[1.1] hover:transition-all object-cover "
               src={error ? placeholderImageUrl : imageUrl}
               alt={title}
               width={500}
               height={500}
               onError={handleImgError}
-              style={{ width: "100%", height: "100px" }}
             />
           </a>
         </div>
