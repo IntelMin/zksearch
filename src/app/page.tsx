@@ -9,14 +9,14 @@ export default function Home() {
     <main className="flex flex-col items-center justify-between md:pt-80 pt-[70%] ">
       <div className="m-auto md:w-full">
         <Image
-          className="w-88 m-auto mb-8"
-          width="75"
-          height="25"
-          objectFit="cover"
+          className='w-88 m-auto mb-8 object-cover'
+          width='75'
+          height='25'
+          // objectFit="cover"
           src={logoImg}
-          alt="logo"
+          alt='logo'
         />
-        <SearchBox className="m-auto" />
+        <SearchBox className='m-auto' />
       </div>
     </main>
   );
