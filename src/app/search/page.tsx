@@ -199,7 +199,7 @@ export default function Page() {
           <div className="flex-auto w-full  xl:w-2/5 ">
             {result && result.items && (
               <div
-                className="content-group-div md:mx-12 mx-4 xl:ml-4 max-md:pr-9 xl:mr-12 mb-4 mt-3 rounded-2xl p-4 border-2 border-red-500 content-group-right-first content-group-right1 overflow-hidden "
+                className="content-group-div md:mx-12 max-md:pr-9 mx-4 xl:ml-4 xl:mr-12  mb-4 mt-0 max-md:mt-3 rounded-2xl p-4 content-group-right-first content-group-right1 overflow-hidden "
                 style={{ background: "rgba(255, 255, 255, 0.06)" }}
               >
                 <p className="text-white text-lg mb-1">Image</p>
@@ -288,3 +288,30 @@ export default function Page() {
     </>
   );
 }
+
+const imageCardStaticData = [
+  {
+    url: "https://images.pexels.com/photos/13040899/pexels-photo-13040899.jpeg",
+    title: "1",
+  },
+  {
+    url: "https://images.pexels.com/photos/13040899/pexels-photo-13040899.jpeg",
+    title: "1",
+  },
+  {
+    url: "https://images.pexels.com/photos/13040899/pexels-photo-13040899.jpeg",
+    title: "1",
+  },
+  {
+    url: "https://images.pexels.com/photos/13040899/pexels-photo-13040899.jpeg",
+    title: "1",
+  },
+  {
+    url: "https://images.pexels.com/photos/13040899/pexels-photo-13040899.jpeg",
+    title: "1",
+  },
+  {
+    url: "https://images.pexels.com/photos/13040899/pexels-photo-13040899.jpeg",
+    title: "1",
+  },
+];
