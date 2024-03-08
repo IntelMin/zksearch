@@ -21,7 +21,8 @@ const RelatedLink: React.FC<RelatedLinkProps> = ({ link, query }) => {
             src="/search-normal.svg"
             alt="Search Icon"
             layout="fill" // Use either 'fill' or provide 'width' and 'height'
-            objectFit="contain"
+            // objectFit="contain"
+            className="object-contain"
           />
         </div>
         <p className="relatedlink-text-container text-truncate inline-block text-base">
