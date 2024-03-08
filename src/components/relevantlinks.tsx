@@ -6,7 +6,7 @@ import React from "react";
 const RelevantLinks: React.FC<{ links: OrganicResult[] }> = ({ links }) => {
   return (
     <ScrollArea
-      className="content-div mb-4 rounded-xl p-4"
+      className="content-div mb-4  rounded-xl p-4"
       style={{ background: "rgba(255, 255, 255, 0.06)" }}
     >
       <p className="mb-3 text-lg text-white">Relevant Links:</p>
