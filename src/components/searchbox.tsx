@@ -53,7 +53,7 @@ const SearchBox: React.FC<SearchComponentProps> = ({ className }) => {
       const response = await axios.get<{
         items: { title: string }[];
       }>(
-        `https://www.googleapis.com/customsearch/v1?key=${process.env.GOOGLE_API_KEY}&cx=${process.env.GOOGLE_API_CX}&q=${input}`
+        `https://www.googleapis.com/customsearch/v1?key=${process.env.GOOGLE_API_KEY}&cx=${process.env.GOOGLE_API_CX}&q=${input}$num=5`
       );
       const suggestedItems = response.data.items.map((item: any) => item.title);
       setSuggestions(suggestedItems);
@@ -103,7 +103,7 @@ const SearchBox: React.FC<SearchComponentProps> = ({ className }) => {
             </div>
             {open && (
               <div className='flex flex-col items-start justify-start w-full text-start space-y-2 max-h-[230px] overflow-y-auto scroll-m-2'>
-                {/* {arr.map((item, index) => (
+                {arr.map((item, index) => (
                   <li
                     key={index}
                     className='flex items-center p-1 mt-1 px-1 space-x-3 w-full hover:bg-gray-800 rounded-md text-start'
@@ -118,20 +118,7 @@ const SearchBox: React.FC<SearchComponentProps> = ({ className }) => {
                     />
                     hello
                   </li>
-                ))} */}
-                {suggestions.length > 0 && (
-                  <ul className='absolute top-full left-0 z-10 w-full bg-white border border-gray-300 rounded-b-lg shadow-md'>
-                    {suggestions.map((suggestion, index) => (
-                      <li
-                        key={index}
-                        onClick={() => handleSuggestionClick(suggestion)}
-                        className='px-4 py-2 cursor-pointer hover:bg-gray-100'
-                      >
-                        {suggestion}
-                      </li>
-                    ))}
-                  </ul>
-                )}
+                ))}
               </div>
             )}
           </>
@@ -166,7 +153,7 @@ const SearchBox: React.FC<SearchComponentProps> = ({ className }) => {
             </div>
             {open && (
               <div className='flex flex-col items-start justify-start w-full text-start space-y-2 max-h-[230px] overflow-y-auto scroll-m-2'>
-                {/* {arr.map((item, index) => (
+                {arr.map((item, index) => (
                   <li
                     key={index}
                     className='flex items-center p-1 mt-1 px-1 space-x-3 w-full hover:bg-gray-800 rounded-md text-start'
@@ -179,23 +166,9 @@ const SearchBox: React.FC<SearchComponentProps> = ({ className }) => {
                       alt='Search Icon'
                       className='w-4 h-4 mr-3 text-white'
                     />
-                 
                     hello
                   </li>
-                ))} */}
-                {suggestions.length > 0 && (
-                  <ul className='absolute top-full left-0 z-10 w-full bg-white border border-gray-300 rounded-b-lg shadow-md'>
-                    {suggestions.map((suggestion, index) => (
-                      <li
-                        key={index}
-                        onClick={() => handleSuggestionClick(suggestion)}
-                        className='px-4 py-2 cursor-pointer hover:bg-gray-100'
-                      >
-                        {suggestion}
-                      </li>
-                    ))}
-                  </ul>
-                )}
+                ))}
               </div>
             )}
           </>

@@ -1,22 +1,23 @@
+"use client";
 import SearchBox from "@/components/searchbox";
 import Image from "next/image";
-import React, { Suspense } from "react";
+import React from "react";
 import logoImg from "../../public/logo.svg";
-import { Input } from "@/components/ui/input";
 
 export default function Home() {
   return (
-    <main className='flex flex-col items-center justify-between pt-80'>
-      <div className='m-auto md:w-full'>
-        <Image
-          className='w-88 m-auto mb-8 object-cover'
-          width='75'
-          height='25'
-          // objectFit="cover"
-          src={logoImg}
-          alt='logo'
-        />
-        <SearchBox className='m-auto' />
+    <main className='flex flex-col items-center justify-center h-screen'>
+      <div className='flex flex-col items-center'>
+        <div className='mb-8'>
+          <Image
+            className='object-cover'
+            width={100}
+            height={100}
+            src={logoImg}
+            alt='logo'
+          />
+        </div>
+        <SearchBox className='w-full max-w-lg' />
       </div>
     </main>
   );
