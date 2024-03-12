@@ -35,6 +35,12 @@ body {
   }
 }
 
+@layer base {
+  :root {
+    --search-suggestion: 240, 6%, 10%, 0.4;
+  }
+}
+
 /* styles.css */
 body {
   font-family: "Roboto", sans-serif;

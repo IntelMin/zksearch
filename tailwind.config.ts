@@ -21,6 +21,7 @@ const config: Config = {
       },
       colors: {
         'custom-gray': '#27272A',
+        'search-suggestion': 'hsla(var(--search-suggestion))',
       },
     },
   },
