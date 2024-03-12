@@ -10,6 +10,16 @@ interface ImageCardProps {
   url: string;
 }
 
+interface CustomLoaderProps {
+  src: string;
+  width: number;
+  quality?: number;
+}
+
+const customLoader = ({ src }: CustomLoaderProps) => {
+  return src;
+}
+
 // Use the custom Image component within your ImageCard component
 const ImageCard: React.FC<ImageCardProps> = ({ imageUrl, title, url }) => {
   const [error, setError] = React.useState(false);
@@ -28,6 +38,7 @@ const ImageCard: React.FC<ImageCardProps> = ({ imageUrl, title, url }) => {
           <a href={url} rel="noopener noreferrer" className="aspect-square">
             <Image
               className="mr-2 inline-block aspect-square w-full md:h-[100px] h-[105px] rounded-lg bg-cover duration-100 ease-in-out md:hover:scale-[1.1] hover:transition-all object-cover "
+              loader={customLoader}
               src={error ? placeholderImageUrl : imageUrl}
               alt={title}
               width={500}

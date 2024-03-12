@@ -5,6 +5,9 @@ export async function POST(req: Request) {
         const json = await req.json();
         const { query } = json;
 
+        console.log('query', query)
+
+
         const base_url = 'https://api.bing.com/osjson.aspx'
 
         const params = new URLSearchParams({
@@ -19,6 +22,8 @@ export async function POST(req: Request) {
         }
         
         const results = await suggestionResponse.json();
+
+        console.log("suggestionResponse", results)
         
         return NextResponse.json(
             { status: 200, headers: { 'Content-Type': 'application/json' }, data: results[1] }
